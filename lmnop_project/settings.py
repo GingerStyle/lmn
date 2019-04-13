@@ -27,6 +27,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+AUTH_USER_MODEL = 'lmn.CustomUser'
 
 # Application definition
 
@@ -37,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.postgres',
     'lmn'
 ]
 
@@ -104,7 +106,10 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
-
+AUTHENTICATION_BACKENDS = (
+    'django.contrib.auth.backends.RemoteUserBackend',
+    'django.contrib.auth.backends.ModelBackend'
+)
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.9/topics/i18n/
@@ -128,5 +133,5 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 # Where to send user after successful login if no other page is provided.
 # Should provide the user object.
-LOGIN_REDIRECT_URL = 'lmn:my_user_profile'
+LOGIN_REDIRECT_URL = 'lmn:homepage'
 LOGOUT_REDIRECT_URL = 'lmn:homepage'

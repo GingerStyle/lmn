@@ -4,7 +4,7 @@ from django.urls import reverse
 from django.contrib import auth
 
 from lmn.models import Venue, Artist, Note, Show
-from django.contrib.auth.models import User
+from django.contrib.auth.models import CustomUser
 
 import re, datetime
 from datetime import timezone
@@ -45,7 +45,7 @@ class TestNotes(TestCase):
         self.assertTemplateUsed(response, 'lmn/notes/note_list.html')
 
         # Log someone in
-        self.client.force_login(User.objects.first())
+        self.client.force_login(CustomUser.objects.first())
         response = self.client.get(reverse('lmn:new_note', kwargs={'show_pk':1}))
         self.assertTemplateUsed(response, 'lmn/notes/new_note.html')
 
@@ -54,7 +54,7 @@ class TestAddNotesWhenUserLoggedIn(TestCase):
     fixtures = ['testing_users', 'testing_artists', 'testing_shows', 'testing_venues', 'testing_notes']
 
     def setUp(self):
-        user = User.objects.first()
+        user = CustomUser.objects.first()
         self.client.force_login(user)
 
 

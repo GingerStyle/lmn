@@ -1,8 +1,7 @@
 from django import forms
-from .models import Note
-
+from .models import Note, CustomUser
+from django.contrib.postgres.fields import CITextField
 from django.contrib.auth.forms import UserCreationForm
-from django.contrib.auth.models import User
 from django.forms import ValidationError
 
 
@@ -21,11 +20,9 @@ class NewNoteForm(forms.ModelForm):
 
 
 class UserRegistrationForm(UserCreationForm):
-
     class Meta:
-        model = User
-        fields = ('username', 'first_name', 'last_name', 'email', 'password1', 'password2')
-
+        model = CustomUser
+        fields = ('username', 'first_name', 'email', 'last_name', 'password1', 'password2')
 
     def clean_username(self):
 
@@ -34,7 +31,7 @@ class UserRegistrationForm(UserCreationForm):
         if not username:
             raise ValidationError('Please enter a username')
 
-        if User.objects.filter(username__iexact=username).exists():
+        if CustomUser.objects.filter(username__iexact=username).exists():
             raise ValidationError('A user with that username already exists')
 
         return username
@@ -61,7 +58,7 @@ class UserRegistrationForm(UserCreationForm):
         if not email:
             raise ValidationError('Please enter an email address')
 
-        if User.objects.filter(email__iexact=email).exists():
+        if CustomUser.objects.filter(email__iexact=email).exists():
             raise ValidationError('A user with that email address already exists')
 
         return email
