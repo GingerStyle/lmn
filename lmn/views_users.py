@@ -1,10 +1,9 @@
 from django.shortcuts import render, redirect
 
-from .models import Venue, Artist, Note, Show
+from .models import Venue, Artist, Note, Show, CustomUser
 from .forms import VenueSearchForm, NewNoteForm, ArtistSearchForm, UserRegistrationForm
 
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
 
 from django.utils import timezone
@@ -12,7 +11,7 @@ from django.utils import timezone
 
 
 def user_profile(request, user_pk):
-    user = User.objects.get(pk=user_pk)
+    user = CustomUser.objects.get(pk=user_pk)
     usernotes = Note.objects.filter(user=user.pk).order_by('posted_date').reverse()
     return render(request, 'lmn/users/user_profile.html', {'user' : user , 'notes' : usernotes })
 
