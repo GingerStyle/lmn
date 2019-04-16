@@ -1,0 +1,16 @@
+{% extends 'lmn/base.html' %}
+
+{% block content %}
+    {% if message %}
+        <P>{{ message }}</p>
+    {% endif %}
+    <form action="{% url 'lmn:login' %}?next={{ request.path }}">
+        {{ l_form.as_table }}
+        <button type='submit' name='submit' value='sign_in'></button>
+    </form>
+    <!-- Sign Up Form -->
+    <form action="{% url 'lmn:register' %}?next={{ request.path }}">
+        {{ s_form.as_table }}
+        <button type='submit' name='submit' value='sign_up'></button>
+    </form>
+{% endblock %}

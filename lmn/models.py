@@ -3,6 +3,8 @@ from django.conf import settings
 from django.contrib.postgres import fields
 from django.contrib.auth.models import AbstractUser, BaseUserManager
 import datetime
+from django.contrib.contenttypes.models import ContentType
+from django.contrib.contenttypes.fields import GenericForeignKey
 
 # Every model gets a primary key field by default.
 
@@ -91,3 +93,4 @@ class CustomUser(AbstractUser):
 
     def __str__(self):
         return self.username
+

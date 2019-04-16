@@ -1,16 +1,26 @@
 {% extends 'lmn/base.html' %}
 
 {% block content %}
-
+    {% if message %}
+        <P>{{ message }}</p>
+    {% endif %}
   <h2>Log in</h2>
 
-  <form method='POST' action="">{% csrf_token %}
-  <table id='login_form'>
-    {{ form.as_table }}
-  </table>
+  <form method='POST' action="{% url 'lmn:login' %}">{% csrf_token %}
+      <input name="url" type="hidden" value={{ request.GET.next}}>
+      <table id='login_form'>
+          {{ l_form.as_table }}
+      </table>
     <button type="submit">Login</button>
   </form>
 
-<P><a href="{% url 'lmn:register' %}">Or create an account</a></p>
+    <h2>Or Register</h2>
 
+    <form method='post' action="{% url 'lmn:register' %}?next={{ request.path }}">{% csrf_token %}
+        <input name= "url" type="hidden" value={{ request.GET.next}}>
+    <table id="registration_form">
+        {{ s_form.as_table}}
+    </table>
+    <button type='submit'>Register</button>
+    </form>
 {% endblock %}
