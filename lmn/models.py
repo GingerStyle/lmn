@@ -36,12 +36,13 @@ class Venue(models.Model):
 
 ''' A show - one artist playing at one venue at a particular date. '''
 class Show(models.Model):
+    title = models.Charfield(max_length=100, blank=False)
     show_date = models.DateTimeField(blank=False)
-    artist = models.ManyToManyField(Artist)
+    artists = models.ManyToManyField(Artist)
     venue = models.ForeignKey(Venue, on_delete=models.CASCADE)
 
     def __str__(self):
-        return 'Show with artist {} at {} on {}'.format(self.artist, self.venue, self.show_date)
+        return '{} with artist {} at {} on {}'.format(self.title, self.artists, self.venue, self.show_date)
 
 
 ''' One user's opinion of one show. '''
