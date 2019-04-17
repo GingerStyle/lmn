@@ -16,3 +16,9 @@ body {
 #login_form.th, #registration_form.th {
   text-align: right;
 }
+
+#logout_message {
+  color: red;
+  font-size: 17px;
+  text-align: center;
+}
