@@ -37,8 +37,7 @@ class Venue(models.Model):
 ''' A show - one artist playing at one venue at a particular date. '''
 class Show(models.Model):
     show_date = models.DateTimeField(blank=False)
-    artist = models.ForeignKey(Artist, on_delete=models.CASCADE)
-    coartist = models.CharField(max_length=200, blank=True)
+    artist = models.ManyToManyField(Artist)
     venue = models.ForeignKey(Venue, on_delete=models.CASCADE)
 
     def __str__(self):
