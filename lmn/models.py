@@ -91,3 +91,9 @@ class CustomUser(AbstractUser):
 
     def __str__(self):
         return self.username
+
+
+class UserProfile(models.Model):
+    favorite_band = models.CharField(max_length=128, blank=True)
+    birthday = models.DateField(blank=True)
+    userId = models.ForeignKey(CustomUser, on_delete=models.CASCADE)

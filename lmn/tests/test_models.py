@@ -43,3 +43,5 @@ class TestUser(TestCase):
         user2 = User(username='another_bob', email='Bob@bob.com', first_name='bob', last_name='bob')
         with self.assertRaises(IntegrityError):
             user2.save()
+
+# class TestUserProfile(TestCase):
