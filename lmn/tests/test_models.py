@@ -1,6 +1,6 @@
 from django.test import TestCase
 
-from django.contrib.auth.models import User
+from lmn.models import CustomUser as User
 from django.db import IntegrityError
 # Create your tests here.
 
