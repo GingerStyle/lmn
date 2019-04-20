@@ -11,7 +11,9 @@ https://docs.djangoproject.com/en/1.9/ref/settings/
 """
 
 import os
-
+import psycopg2
+import dj_database_url
+from decouple import config
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -86,6 +88,8 @@ DATABASES = {
     }
 }
 
+# DATABASES['default'] = dj_database_url.config(default=config('DATABASE_URL'), conn_max_age=600, ssl_require=True)
+
 
 # Password validation
 # https://docs.djangoproject.com/en/1.9/ref/settings/#auth-password-validators
@@ -133,3 +137,5 @@ LOGOUT_REDIRECT_URL = 'lmn:homepage'
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+COMPRESS_OFFLINE = os.environ.get('COMPRESS_OFFLINE', True)
