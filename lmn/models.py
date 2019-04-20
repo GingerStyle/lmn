@@ -43,14 +43,32 @@ class Show(models.Model):
 
 ''' One user's opinion of one show. '''
 class Note(models.Model):
+    Rating = (
+        (1, 'Poor'),
+        (2, 'Average'),
+        (3, 'Good'),
+        (4, 'Very Good'),
+        (5, 'Excellent')
+    )
     show = models.ForeignKey(Show, blank=False, on_delete=models.CASCADE)
     user = models.ForeignKey(settings.AUTH_USER_MODEL, blank=False, on_delete=models.CASCADE)
     title = models.CharField(max_length=200, blank=False)
     text = models.TextField(max_length=1000, blank=False)
     posted_date = models.DateTimeField(blank=False)
+    image = models.ImageField(upload_to='user_images/', blank=True, null=True)
+    rating = models.IntegerField(choices=Rating, default=3)
+    likes = models.IntegerField(null=True, default=0)
+
+    def add_dislike(self):
+        self.likes -= 1
+        self.save()
+
+    def add_like(self):
+        self.likes += 1
+        self.save()
 
     def publish(self):
-        posted_date = datetime.datetime.today()
+        self.posted_date = datetime.datetime.today()
         self.save()
 
     def __str__(self):
@@ -82,8 +100,8 @@ class MyUserManager(BaseUserManager):
 
 
 class CustomUser(AbstractUser):
-    username = fields.CICharField(max_length=128, blank=False, unique=True)
-    email = fields.CICharField(max_length=128, unique=True, blank=False)
+    username = models.CharField(max_length=128, blank=False, unique=True)
+    email = models.CharField(max_length=128, unique=True, blank=False)
     first_name = models.CharField(max_length=128, blank=False)
     last_name = models.CharField(max_length=128, blank=False)
     objects = MyUserManager()

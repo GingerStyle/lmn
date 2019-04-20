@@ -1,6 +1,6 @@
 from django.test import TestCase
 
-from django.contrib.auth.models import User
+from lmn.models import UserProfile, CustomUser as User
 from django.db import IntegrityError
 # Create your tests here.
 
@@ -44,4 +44,13 @@ class TestUser(TestCase):
         with self.assertRaises(IntegrityError):
             user2.save()
 
-# class TestUserProfile(TestCase):
+class TestUserProfile(TestCase):
+    fixtures = ['testing_users.json']
+
+    def test_user_profile(self):
+        user = User.objects.get(id='1')
+        profile = UserProfile(birthday='1998-12-17', userId=user, favorite_band='Maroon 5')
+        profile.save()
+        user_id = UserProfile.objects.get(id='1')
+        user2 = User.objects.get(id='1')
+        self.assertEqual(user, user2)

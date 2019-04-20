@@ -4,7 +4,9 @@
         "user" : "1",
         "title" : "ok",
         "text" : "kinda ok",
-        "posted_date" : "2017-02-12"
+        "posted_date" : "2017-02-12",
+        "likes": "13",
+        "rating": "2"
       }
     },
 
