@@ -3,7 +3,6 @@
   <component name="dataSourceStorageLocal">
     <data-source name="Django default" uuid="9269bd6b-903e-4c5d-85bf-fc87f63eb011">
       <database-info product="" version="" jdbc-version="" driver-name="" driver-version="" dbms="POSTGRES" exact-version="0" />
-      <user-name>lmnop</user-name>
     </data-source>
   </component>
 </project>
