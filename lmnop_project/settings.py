@@ -78,14 +78,14 @@ WSGI_APPLICATION = 'lmnop_project.wsgi.application'
 # https://docs.djangoproject.com/en/1.9/ref/settings/#databases
 
 DATABASES = {
-''''default': {
-        'ENGINE': 'django.db.backends.postgresql',
+'default': {
+        ''''ENGINE': 'django.db.backends.postgresql',
         'NAME': 'lmnop',
         'USER': 'lmnop',
         'PASSWORD': os.environ.get('LMNOP_DB_PW'),
         'HOST': 'localhost',
-        'PORT': '5432',
-    }'''
+        'PORT': '5432','''
+    }
 }
 
 db_from_env = dj_database_url.config(default=config('DATABASE_URL'), conn_max_age=600, ssl_require=True)
