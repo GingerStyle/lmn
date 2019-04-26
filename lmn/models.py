@@ -115,3 +115,20 @@ class UserProfile(models.Model):
     favorite_band = models.CharField(max_length=128, blank=True)
     birthday = models.DateField(blank=True)
     userId = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return "{}'s profile".format(self.userId)
+
+
+class LikeNote(models.Model):
+    note = models.ForeignKey(Note, on_delete=models.CASCADE)
+    user = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
+    value = models.IntegerField(null=True, blank=True, default=0)
+
+    def dislike(self):
+        self.value = -1
+        self.save()
+
+    def like(self):
+        self.value = 1
+        self.save()

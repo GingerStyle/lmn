@@ -55,6 +55,7 @@ class NewNoteFormTests(TestCase):
         self.assertTrue(form.is_valid())
 
 
+
 class RegistrationFormTests(TestCase):
 
     # missing fields

@@ -16,11 +16,13 @@ urlpatterns = [
     path('venues/artists_at/<int:venue_pk>/', views_venues.artists_at_venue, name='artists_at_venue'),
 
     # Note related
+    path('notes/popular/', views_notes.popular_notes, name='popular_notes'),
     path('notes/latest/', views_notes.latest_notes, name='latest_notes'),
     path('notes/detail/<int:note_pk>/', views_notes.note_detail, name='note_detail'),
     path('notes/for_show/<int:show_pk>/', views_notes.notes_for_show, name='notes_for_show'),
     path('notes/add/<int:show_pk>/', views_notes.new_note, name='new_note'),
-
+    path('notes/like/<int:note_pk>/', views_notes.add_note_like, name='like_note'),
+    path('notes/dislike/<int:note_pk>/', views_notes.add_note_dislike, name='dislike_note'),
     # Artist related
     path('artists/list/', views_artists.artist_list, name='artist_list'),
     path('artists/detail/<int:artist_pk>/', views_artists.artist_detail, name='artist_detail'),

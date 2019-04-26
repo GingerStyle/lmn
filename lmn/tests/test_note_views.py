@@ -1,9 +1,9 @@
 from django.test import TestCase, Client
-
+from django.shortcuts import get_object_or_404
 from django.urls import reverse
 from django.contrib import auth
 
-from lmn.models import Venue, Artist, Note, Show
+from lmn.models import Venue, Artist, Note, Show, LikeNote
 from lmn.models import CustomUser
 
 import re, datetime
@@ -11,7 +11,7 @@ from datetime import timezone
 
 
 class TestNotes(TestCase):
-    fixtures = [ 'testing_users', 'testing_artists', 'testing_venues', 'testing_shows', 'testing_notes' ]  # Have to add artists and venues because of foreign key constrains in show
+    fixtures = [ 'testing_likenotes', 'testing_users', 'testing_artists', 'testing_venues', 'testing_shows', 'testing_notes']  # Have to add artists and venues because of foreign key constrains in show
 
     def test_latest_notes(self):
         response = self.client.get(reverse('lmn:latest_notes'))
@@ -49,6 +49,16 @@ class TestNotes(TestCase):
         response = self.client.get(reverse('lmn:new_note', kwargs={'show_pk':1}))
         self.assertTemplateUsed(response, 'lmn/notes/new_note.html')
 
+    def test_no_notes_for_user(self):
+        self.client.force_login(CustomUser.objects.get(pk="3"))
+        response = self.client.get(reverse('lmn:user_profile', kwargs={'user_pk': 3}), follow=True)
+        self.assertContains(response, 'No notes.')
+        self.assertEqual(response.status_code, 200)
+
+    def test_most_popular_notes(self):
+        response = self.client.get(reverse('lmn:popular_notes'), follow=True)
+        context = response.context['notes'][0]
+        self.assertEqual(context.pk, 3)
 
 class TestAddNotesWhenUserLoggedIn(TestCase):
     fixtures = ['testing_users', 'testing_artists', 'testing_shows', 'testing_venues', 'testing_notes']
@@ -117,3 +127,31 @@ class TestAddNotesWhenUserLoggedIn(TestCase):
         new_note = Note.objects.filter(text='ok', title='blah blah').first()
 
         self.assertRedirects(response, reverse('lmn:note_detail', kwargs={'note_pk': new_note.pk }))
+
+
+class TestAddLikeNotes(TestCase):
+    fixtures = ['testing_likenotes', 'testing_users', 'testing_artists', 'testing_venues', 'testing_shows',
+                'testing_notes']  # Have to add artists and venues because of foreign key constrains in show
+
+    def test_add_like_notes(self):
+        self.client.force_login(CustomUser.objects.get(pk="3"))
+        response = self.client.post(reverse('lmn:like_note', kwargs={'note_pk': 3}), follow=True)
+        self.assertEqual(response.status_code, 200)
+        note = Note.objects.get(pk="3")
+        self.assertNotEqual(note.likes, 23)
+        self.assertEqual(note.likes, 24)
+        query = LikeNote.objects.filter(user=3)
+        like = get_object_or_404(query, note=3).value
+        self.assertEqual(like, 1)
+        self.assertContains(response, 'Likes: 24')
+    def test_add_dislike_note_already_disliked(self):
+        self.client.force_login(CustomUser.objects.get(pk="3"))
+        response = self.client.post(reverse('lmn:dislike_note', kwargs={'note_pk': 3}), follow=True)
+        self.assertEqual(response.status_code, 200)
+        note = Note.objects.get(pk="3")
+        self.assertNotEqual(note.likes, 22)
+        self.assertEqual(note.likes, 23)
+        query = LikeNote.objects.filter(user=3)
+        dislike = get_object_or_404(query, note=3).value
+        self.assertEqual(dislike, -1)
+        self.assertContains(response, 'Likes: 23')
