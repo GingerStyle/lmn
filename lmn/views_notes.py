@@ -86,3 +86,30 @@ def add_note_dislike(request, note_pk):
 def popular_notes(request):
     notes = Note.objects.all().order_by('rating', 'likes').reverse()
     return render(request, 'lmn/notes/note_list.html', {'notes': notes})
+
+@login_required
+def edit_note(request, note_pk):
+    note = Note.objects.get(pk=note_pk)
+    show = Show.objects.get(pk=note.show_id)
+    if request.user!=note.user:
+        return redirect('lmn:latest_notes')
+    if request.method=='POST':
+        form = NewNoteForm(request.POST, instance=note)
+        if form.is_valid():
+            note = form.save(commit=False)
+            note.user = request.user
+            note.show = show
+            note.save()
+            return redirect('lmn:note_detail', note_pk=note.pk)
+    else:
+        form = NewNoteForm(initial={'title': note.title, 'text': note.text, 'rating': note.rating, 'image': note.image})
+        return render(request, 'lmn/notes/edit_note.html', {'show': show, 'note': note, 'form': form})
+
+
+@login_required
+def delete_note(request, note_pk):
+    note = Note.objects.get(pk=note_pk)
+    if request.user != note.user:
+        return redirect('lmn:latest_notes')
+    Note.objects.filter(pk=note_pk).delete()
+    return redirect('lmn:latest_notes')

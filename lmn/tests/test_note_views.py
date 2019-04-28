@@ -60,6 +60,7 @@ class TestNotes(TestCase):
         context = response.context['notes'][0]
         self.assertEqual(context.pk, 3)
 
+
 class TestAddNotesWhenUserLoggedIn(TestCase):
     fixtures = ['testing_users', 'testing_artists', 'testing_shows', 'testing_venues', 'testing_notes']
 
@@ -155,3 +156,48 @@ class TestAddLikeNotes(TestCase):
         dislike = get_object_or_404(query, note=3).value
         self.assertEqual(dislike, -1)
         self.assertContains(response, 'Likes: 23')
+
+
+class TestEditNotes(TestCase):
+    fixtures = ['testing_users', 'testing_artists', 'testing_shows', 'testing_venues', 'testing_notes']
+    def test_edit_note_user_not_logged_in(self):
+        response = self.client.get(reverse('lmn:edit_note', kwargs={'note_pk':1}), follow=True)
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, 'registration/login.html')
+
+    def test_edit_note_user_logged_in(self):
+        user = CustomUser.objects.get(pk=1)
+        self.client.force_login(user)
+        response = self.client.get(reverse('lmn:edit_note', kwargs={'note_pk': 1}))
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, 'lmn/notes/edit_note.html')
+    def test_post_edit_note(self):
+        user = CustomUser.objects.get(pk=1)
+        self.client.force_login(user)
+        note = Note.objects.get(pk=1)
+        text = note.text
+        response = self.client.post(reverse('lmn:edit_note', kwargs={'note_pk': 1}),
+                                    {'title': 'ok', 'text': 'not bad', 'rating': 2}, follow=True)
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, 'lmn/notes/note_detail.html')
+        expected = Note.objects.get(pk=1)
+        expectedText = expected.text
+        self.assertNotEqual(text, expectedText)
+
+    def test_post_edit_another_users_note(self):
+        user = CustomUser.objects.get(pk=2)
+        self.client.force_login(user)
+        response = self.client.post(reverse('lmn:edit_note', kwargs={'note_pk': 1}),
+                                    {'title': 'ok', 'text': 'not bad', 'rating': 2}, follow=True)
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, 'lmn/notes/note_list.html')
+
+    def test_delete_note(self):
+        user = CustomUser.objects.get(pk=1)
+        self.client.force_login(user)
+        response = self.client.get(reverse('lmn:delete_note', kwargs={'note_pk': 1}), follow=True)
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, 'lmn/notes/note_list.html')
+
+        with self.assertRaises(Note.DoesNotExist):
+            Note.objects.get(pk__exact='1')

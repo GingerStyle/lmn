@@ -12,14 +12,10 @@
     <p>Rating: {{ note.rating }}</p>
     <p>Likes: {{ note.likes }}</p>
     {% if user == note.user %}
+        <a role="button" href="{% url 'lmn:edit_note' note_pk=note.pk%}" class="btn btn-warning" id="edit_note_button">Edit Note</a>
+        <a role="button" href="{% url 'lmn:delete_note' note_pk=note.pk%}" class="btn btn-danger" id="delete_note_button">Delete Note</a>
     {% else %}
-        <form id="add_note_like">
-            <input type="hidden" value={{ note.id }}>
-        <span class="glyphicon glyphicon-thumbs-up"><a href={% url 'lmn:like_note' note_pk=note.id %}></a></span>
-        </form>
-        <form id="add_note_dislike">
-            <input type="hidden" value={{ note.id }}>
-        <span class="glyphicon glyphicon-thumbs-down"><a href={% url 'lmn:dislike_note' note_pk=note.id %}></a></span>
-        </form>
+        <span class="glyphicon glyphicon-thumbs-up" id="note_thumbs_up"><a href={% url 'lmn:like_note' note_pk=note.id %}></a></span>
+        <span class="glyphicon glyphicon-thumbs-down" id="note_thumbs_down"><a href={% url 'lmn:dislike_note' note_pk=note.id %}></a></span>
     {% endif %}
 {% endblock %}

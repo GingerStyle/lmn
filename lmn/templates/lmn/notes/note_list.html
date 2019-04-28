@@ -6,7 +6,7 @@
     <h2 id="show_title">Notes for {{ show.artist.name }} at {{ show.venue.name }} on {{ show.show_date }}</h2>
 {% else %}
     <h2>Latest Notes</h2>
-    <a href="{% url 'lmn:popular_notes' %}" class="btn tbn-outline-primary" type="submit">Most Popular Notes</a>
+    <a href="{% url 'lmn:popular_notes' %}" class="btn btn-outline-primary" type="submit">Most Popular Notes</a>
 
 
 {% endif %}
