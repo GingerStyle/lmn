@@ -9,8 +9,9 @@ https://docs.djangoproject.com/en/1.9/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/1.9/ref/settings/
 """
-
+import dj_database_url
 import os
+
 import psycopg2
 import dj_database_url
 from decouple import config
@@ -27,7 +28,7 @@ SECRET_KEY = '8c01$#j44g3znb)$q0()8)!%ts-jc)k12!a75-!63qb%bj=d4k'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 AUTH_USER_MODEL = 'lmn.CustomUser'
 # Application definition
@@ -78,6 +79,7 @@ WSGI_APPLICATION = 'lmnop_project.wsgi.application'
 # https://docs.djangoproject.com/en/1.9/ref/settings/#databases
 
 DATABASES = {
+
 'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'lmnop',
@@ -90,6 +92,10 @@ DATABASES = {
 
 #db_from_env = dj_database_url.config(default=config('DATABASE_URL'), conn_max_age=600, ssl_require=True)
 #DATABASES['default'] = db_from_env
+
+
+
+
 
 
 # Password validation
