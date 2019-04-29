@@ -3,8 +3,7 @@ from django.test import TestCase, Client
 from django.urls import reverse
 from django.contrib import auth
 
-from lmn.models import Venue, Artist, Note, Show
-from django.contrib.auth.models import User
+from lmn.models import Venue, Artist, Note, Show, CustomUser as User
 
 import re, datetime
 from datetime import timezone
@@ -355,7 +354,7 @@ class TestAddNotesWhenUserLoggedIn(TestCase):
 
         new_note_url = reverse('lmn:new_note', kwargs={'show_pk':1})
 
-        response = self.client.post(new_note_url, {'text':'ok', 'title':'blah blah' }, follow=True)
+        response = self.client.post(new_note_url, {'text':'ok', 'title':'blah blah', 'rating':4}, follow=True)
 
         # Verify note is in database
         new_note_query = Note.objects.filter(text='ok', title='blah blah')
@@ -375,7 +374,7 @@ class TestAddNotesWhenUserLoggedIn(TestCase):
         initial_note_count = Note.objects.count()
 
         new_note_url = reverse('lmn:new_note', kwargs={'show_pk':1})
-        response = self.client.post(new_note_url, {'text':'ok', 'title':'blah blah' }, follow=True)
+        response = self.client.post(new_note_url, {'text':'ok', 'title':'blah blah', 'rating':4}, follow=True)
         new_note = Note.objects.filter(text='ok', title='blah blah').first()
 
         self.assertRedirects(response, reverse('lmn:note_detail', kwargs={'note_pk': new_note.pk }))
