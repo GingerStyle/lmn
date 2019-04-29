@@ -11,8 +11,10 @@ https://docs.djangoproject.com/en/1.9/ref/settings/
 """
 import dj_database_url
 import os
-from decouple import config
 
+import psycopg2
+import dj_database_url
+from decouple import config
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -28,7 +30,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
-
+AUTH_USER_MODEL = 'lmn.CustomUser'
 # Application definition
 
 INSTALLED_APPS = [
@@ -78,9 +80,23 @@ WSGI_APPLICATION = 'lmnop_project.wsgi.application'
 
 DATABASES = {
 
+'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'lmnop',
+        'USER': 'lmnop',
+        'PASSWORD': os.environ.get('LMNOP_DB_PW'),
+        'HOST': 'localhost',
+        'PORT': '5432'
+    }
 }
-db_from_env = dj_database_url.config(default=config('DATABASE_URL'), conn_max_age=600, ssl_require=True)
-DATABASES['default'] = db_from_env
+
+#db_from_env = dj_database_url.config(default=config('DATABASE_URL'), conn_max_age=600, ssl_require=True)
+#DATABASES['default'] = db_from_env
+
+
+
+
+
 
 # Password validation
 # https://docs.djangoproject.com/en/1.9/ref/settings/#auth-password-validators
@@ -125,3 +141,8 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 # Should provide the user object.
 LOGIN_REDIRECT_URL = 'lmn:my_user_profile'
 LOGOUT_REDIRECT_URL = 'lmn:homepage'
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+COMPRESS_OFFLINE = os.environ.get('COMPRESS_OFFLINE', True)

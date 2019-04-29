@@ -1,8 +1,7 @@
 from django import forms
-from .models import Note
+from .models import Note, CustomUser, UserProfile
 
 from django.contrib.auth.forms import UserCreationForm
-from django.contrib.auth.models import User
 from django.forms import ValidationError
 
 
@@ -17,13 +16,13 @@ class ArtistSearchForm(forms.Form):
 class NewNoteForm(forms.ModelForm):
     class Meta:
         model = Note
-        fields = ('title', 'text')
+        fields = ('title', 'text', 'rating', 'image')
 
 
 class UserRegistrationForm(UserCreationForm):
 
     class Meta:
-        model = User
+        model = CustomUser
         fields = ('username', 'first_name', 'last_name', 'email', 'password1', 'password2')
 
 
@@ -34,7 +33,7 @@ class UserRegistrationForm(UserCreationForm):
         if not username:
             raise ValidationError('Please enter a username')
 
-        if User.objects.filter(username__iexact=username).exists():
+        if CustomUser.objects.filter(username__iexact=username).exists():
             raise ValidationError('A user with that username already exists')
 
         return username
@@ -61,7 +60,7 @@ class UserRegistrationForm(UserCreationForm):
         if not email:
             raise ValidationError('Please enter an email address')
 
-        if User.objects.filter(email__iexact=email).exists():
+        if CustomUser.objects.filter(email__iexact=email).exists():
             raise ValidationError('A user with that email address already exists')
 
         return email
@@ -78,3 +77,11 @@ class UserRegistrationForm(UserCreationForm):
             user.save()
 
         return user
+
+class UserProfileForm(forms.ModelForm):
+    YEARS = [x for x in range(1940, 2021)]
+    birthday = forms.DateField(widget=forms.SelectDateWidget(years=YEARS))
+    userId = forms.ModelChoiceField(queryset=CustomUser.objects.filter(), widget=forms.HiddenInput())
+    class Meta:
+        model = UserProfile
+        fields = ('favorite_band', 'birthday', 'userId')

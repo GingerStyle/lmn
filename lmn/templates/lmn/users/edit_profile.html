@@ -1,0 +1,14 @@
+{% extends 'lmn/base.html' %}
+{% block content %}
+    <P>Edit profile</P>
+    {% if message %}
+        {{ message }}
+    {% endif %}
+    <form action="{% url 'lmn:edit_profile' %}" method="POST">{% csrf_token %}
+
+        <table id="edit_profile_form">
+           {{ form.as_table }}
+        </table>
+        <button class="btn btn-default" type="submit">Edit</button>
+    </form>
+{% endblock %}

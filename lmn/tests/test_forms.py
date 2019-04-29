@@ -1,6 +1,6 @@
 from django.test import TestCase
 
-from django.contrib.auth.models import User
+from lmn.models import CustomUser
 from lmn.forms import NewNoteForm, UserRegistrationForm
 import string
 
@@ -55,6 +55,7 @@ class NewNoteFormTests(TestCase):
         self.assertTrue(form.is_valid())
 
 
+
 class RegistrationFormTests(TestCase):
 
     # missing fields
@@ -84,7 +85,7 @@ class RegistrationFormTests(TestCase):
     def test_register_user_with_email_already_in_db_fails(self):
 
         # Create a user with email bob@bob.com
-        bob = User(username='bob', email='bob@bob.com', first_name='bob', last_name='bob')
+        bob = CustomUser(username='bob', email='bob@bob.com', first_name='bob', last_name='bob')
         bob.save()
 
         # attempt to create another user with same email
@@ -96,7 +97,7 @@ class RegistrationFormTests(TestCase):
     def test_register_user_with_username_already_in_db_fails(self):
 
         # Create a user with username bob
-        bob = User(username='bob', email='bob@bob.com')
+        bob = CustomUser(username='bob', email='bob@bob.com')
         bob.save()
 
         # attempt to create another user with same username
@@ -109,7 +110,7 @@ class RegistrationFormTests(TestCase):
     def test_register_user_with_username_already_in_db_case_insensitive_fails(self):
 
         # Create a user with username bob
-        bob = User(username='bob', email='bob@bob.com')
+        bob = CustomUser(username='bob', email='bob@bob.com')
         bob.save()
 
         invalid_username = ['BOB', 'BOb', 'Bob', 'bOB', 'bOb', 'boB']
@@ -125,7 +126,7 @@ class RegistrationFormTests(TestCase):
     def test_register_user_with_email_already_in_db_case_insensitive_fails(self):
 
         # Create a user with username bob
-        bob = User(username='bob', email='bob@bob.com')
+        bob = CustomUser(username='bob', email='bob@bob.com')
         bob.save()
 
         invalid_email = ['BOB@bOb.com', 'BOb@bob.cOm', 'Bob@bob.coM', 'BOB@BOB.COM', 'bOb@bob.com', 'boB@bob.com']
@@ -150,4 +151,4 @@ class LoginFormTests(TestCase):
     # on new features that you add .
 
     def test_login_valid_username_password_ok(self):
-        bob = User()
+        bob = CustomUser()
