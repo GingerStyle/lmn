@@ -1,0 +1,15 @@
+[
+    {"model" : "lmn.userprofile", "pk" : 1 , "fields" :
+      { "favorite_band" : "Maroon 5",
+        "userId" : "1",
+        "birthday" : "1998-01-05"
+      }
+    },
+
+    {"model" : "lmn.userprofile", "pk" : 2 , "fields" :
+      { "favorite_band" : "One Direction",
+        "userId" : "2",
+        "birthday" : "1990-02-05"
+      }
+    }
+]
