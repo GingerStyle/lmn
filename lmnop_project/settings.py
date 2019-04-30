@@ -34,6 +34,9 @@ AUTH_USER_MODEL = 'lmn.CustomUser'
 # Application definition
 
 INSTALLED_APPS = [
+    # dal and dal_select are django-autocomplete-light
+    'dal',
+    'dal_select2',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -79,19 +82,18 @@ WSGI_APPLICATION = 'lmnop_project.wsgi.application'
 # https://docs.djangoproject.com/en/1.9/ref/settings/#databases
 
 DATABASES = {
-
-'default': '''{
+    'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'lmnop',
-        'USER': 'lmnop',
-        'PASSWORD': os.environ.get('LMNOP_DB_PW'),
-        'HOST': 'localhost',
-        'PORT': '5432'
-    }'''
+        'USER' : 'lmnop',
+        'PASSWORD' : os.environ['LMNOP_DB_PW'],
+        'HOST' : 'localhost',
+        'PORT' : '5432',
+    }
 }
 
-db_from_env = dj_database_url.config(default=config('DATABASE_URL'), conn_max_age=600, ssl_require=True)
-DATABASES['default'] = db_from_env
+#db_from_env = dj_database_url.config(default=config('DATABASE_URL'), conn_max_age=600, ssl_require=True)
+#DATABASES['default'] = db_from_env
 
 
 

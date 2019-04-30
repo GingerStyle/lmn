@@ -1,5 +1,6 @@
-from django.urls import path
+from django.urls import path, re_path
 from . import views, views_artists, views_venues, views_notes, views_users
+from .views_autocomplete import VenueAutocomplete
 
 from django.contrib.auth import views as auth_views
 
@@ -11,6 +12,9 @@ urlpatterns = [
     path('', views.homepage, name='homepage'),
 
     # Venue-related
+    re_path(r'^venue-autocomplete/$',
+        VenueAutocomplete.as_view(),
+         name='venue-autocomplete',),
     path('venues/list/', views_venues.venue_list, name='venue_list'),
     path('venues/detail/<int:venue_pk>/', views_venues.venue_detail, name='venue_detail'),
     path('venues/artists_at/<int:venue_pk>/', views_venues.artists_at_venue, name='artists_at_venue'),
