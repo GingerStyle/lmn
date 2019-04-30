@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.http import Http404
 from .models import Venue, Artist, Note, Show, LikeNote
 from .forms import VenueSearchForm, NewNoteForm, ArtistSearchForm, UserRegistrationForm
-
+from django.db.models import Count, Max
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login, logout
 
@@ -113,3 +113,9 @@ def delete_note(request, note_pk):
         return redirect('lmn:latest_notes')
     Note.objects.filter(pk=note_pk).delete()
     return redirect('lmn:latest_notes')
+
+
+@login_required
+def popular_shows(request):
+    shows = Show.objects.annotate(notes=Count('note')).order_by('notes').reverse()
+    return render(request, 'lmn/shows/show_list.html', {'shows': shows})

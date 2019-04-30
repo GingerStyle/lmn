@@ -25,3 +25,7 @@ body {
 #notes_user_profile{
   font-size: 150%;
 }
+
+#popular_notes_link{
+  position: relative;
+}
