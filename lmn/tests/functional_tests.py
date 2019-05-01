@@ -3,8 +3,7 @@ from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 
 import re, time
-
-from django.contrib.auth.models import User
+from lmn.models import CustomUser as User
 
 
 ### TODO break into smaller tests; helper methods?

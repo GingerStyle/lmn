@@ -1,0 +1,42 @@
+[
+    {"model" : "lmn.likenote", "pk" : 1 , "fields" :
+      { "user" : "1",
+        "note" : "1",
+        "value": "-1"
+      }
+    },
+
+    {"model" : "lmn.likenote", "pk" : 2 , "fields" :
+      { "note" : "2",
+        "user" : "1",
+        "value": "1"
+      }
+    },
+
+    {"model" : "lmn.likenote", "pk" : 3 , "fields" :
+      { "note" : "3",
+        "user" : "2",
+        "value": "-1"
+      }
+    },
+  {"model" : "lmn.likenote", "pk" : 4 , "fields" :
+      { "user" : "2",
+        "note" : "1",
+        "value": "1"
+      }
+    },
+
+    {"model" : "lmn.likenote", "pk" : 5 , "fields" :
+      { "user" : "3",
+        "note" : "2",
+        "value": "-1"
+      }
+    },
+
+    {"model" : "lmn.likenote", "pk" : 6 , "fields" :
+      { "user" : "3",
+        "note" : "3",
+        "value": "-1"
+      }
+    }
+]

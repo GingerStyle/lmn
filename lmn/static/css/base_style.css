@@ -1,5 +1,6 @@
 body {
   font-family: monospace;
+  padding: 10px;
 }
 
 #welcome_user_msg, #login_or_sign_up {
@@ -8,11 +9,24 @@ body {
   padding-right: 10px;
 }
 
-#login_form.tr, #registration_form.tr {
+#login_form.tr, #registration_form.tr , #edit_profile_form.tr{
   padding-top: 2px;
   padding-bottom: 2px;
 }
 
-#login_form.th, #registration_form.th {
+#login_form.th, #registration_form.th ,#edit_profile_form.th{
   text-align: right;
+}
+
+#logout_message {
+  color: red;
+  font-size: 17px;
+  text-align: center;
+}
+#edit_profile{
+  float: right;
+}
+
+#notes_user_profile{
+  font-size: 150%;
 }

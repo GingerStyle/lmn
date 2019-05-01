@@ -3,8 +3,8 @@ from django.test import TestCase, Client
 from django.urls import reverse
 from django.contrib import auth
 from lmn.forms import UserRegistrationForm
-from lmn.models import Venue, Artist, Note, Show
-from django.contrib.auth.models import CustomUser
+from lmn.models import Venue, Artist, Note, Show, UserProfile
+from lmn.models import CustomUser
 from django.contrib.auth import authenticate
 import re, datetime
 from datetime import timezone
@@ -20,7 +20,34 @@ class TestAddNoteUnauthentictedUser(TestCase):
 
 
 class TestUserProfile(TestCase):
-    fixtures = [ 'testing_users', 'testing_artists', 'testing_venues', 'testing_shows', 'testing_notes' ]  # Have to add artists and venues because of foreign key constrains in show
+    fixtures = [ 'testing_user_profiles.json', 'testing_users', 'testing_artists', 'testing_venues', 'testing_shows', 'testing_notes' ]  # Have to add artists and venues because of foreign key constrains in show
+    def test_showing_user_profile(self):
+        user = CustomUser.objects.get(pk='1')
+        profile = UserProfile.objects.get(userId=user)
+        self.client.force_login(user)
+        response = self.client.get(reverse('lmn:my_user_profile'), follow=True)
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, f"Favorite Band: {profile.favorite_band}")
+
+    def test_user_without_user_profile(self):
+        user = CustomUser.objects.get(pk='3')
+        self.client.force_login(user)
+        response = self.client.get(reverse('lmn:my_user_profile'), follow=True)
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, "You have not updated your user profile. Press the pencil icon to update it.")
+
+    def test_update_existing_profile(self):
+        user = CustomUser.objects.get(pk='1')
+        oldProfile = UserProfile.objects.get(userId=user.pk)
+        self.client.force_login(user)
+        response = self.client.post(reverse('lmn:edit_profile'), {'userId': user.pk, 'birthday': '1998-05-12',
+                                                                    'favorite_band': 'Wiz Khalifa'}, follow=True)
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response,  'lmn/users/user_profile.html')
+        newProfile = UserProfile.objects.get(userId=user.pk)
+        self.assertNotEqual(newProfile.favorite_band, oldProfile.favorite_band)
+        self.assertNotContains(response, "You have not updated your user profile. Press the pencil icon to update it.")
+        self.assertContains(response, f"Favorite Band: {newProfile.favorite_band}")
 
     # verify correct list of reviews for a user
     def test_user_profile_show_list_of_their_notes(self):
@@ -68,7 +95,7 @@ class TestUserAuthentication(TestCase):
         # be redirected to the last page they were at, not the homepage.
         response = self.client.post(reverse('lmn:register'), {'username':'sam12345', 'email':'sam@sam.com', 'password1':'feRpj4w4pso3az@1!2', 'password2':'feRpj4w4pso3az', 'first_name':'sam', 'last_name' : 'sam'}, follow=True)
 
-        self.assertRedirects(response, reverse('lmn:homepage'))   # FIXME Fix code to redirect to last page user was on before registration.
+        self.assertRedirects(response, reverse('lmn:my_user_profile'), 302, 200) # FIXME Fix code to redirect to last page user was on before registration.
         self.assertContains(response, 'sam12345')  # Homepage has user's name on it
 
 
@@ -78,4 +105,19 @@ class TestRegistrationUser(TestCase):
                                           'password1': 'feRpj4w4pso3az', 'password2': 'feRpj4w4pso3az'}, follow=True)
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'lmn/users/user_profile.html')
+
+
+class TestLogoutUser(TestCase):
+
+    def test_logout_message(self):
+        self.client.post(reverse('lmn:register'),
+                                    {'username': 'sam12345', 'email': 'sam@sam.com', 'password1': 'feRpj4w4pso3az',
+                                     'password2': 'feRpj4w4pso3az', 'first_name': 'sam', 'last_name': 'sam'},
+                                    follow=True)
+        user = auth.get_user(self.client)
+        response = self.client.post(reverse('lmn:logout'), follow=True)
+        logged_out = response.wsgi_request.user
+        self.assertNotEqual(user, logged_out)
+        self.assertTemplateUsed(response, 'lmn/home.html')
+        self.assertContains(response, 'You have logged out. Come back soon!')
 

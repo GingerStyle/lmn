@@ -3,9 +3,12 @@
 
 
 {% if show %}
-  <h2 id="show_title">Notes for {{ show.artist.name }} at {{ show.venue.name }} on {{ show.show_date }}</h2>
+    <h2 id="show_title">Notes for {{ show.artist.name }} at {{ show.venue.name }} on {{ show.show_date }}</h2>
 {% else %}
-  <h2>Latest Notes</h2>
+    <a href="{% url 'lmn:popular_notes' %}" class="btn btn-outline-primary" type="submit" id="popular_notes_link">Most Popular Notes</a>
+    <h2>Latest Notes</h2>
+
+
 {% endif %}
 
 
@@ -17,7 +20,7 @@
   <P class="note_info">Posted on {{ note.posted_date }} by <a class='user' href="{% url 'lmn:user_profile' user_pk=note.user.pk %}">{{ note.user.username }}</a></p>
   <p class='note_text'>{{ note.text|truncatechars:100 }}</p>
   <hr>
-
+</div>
 {% empty %}
 
 <p>No notes.</p>

@@ -1,8 +1,16 @@
 {% load static %}
 <html>
 <head>
-  <title>LMNOP</title>
-  <link rel="stylesheet" href='{% static 'css/base_style.css' %}'></link>
+    <title>LMNOP</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="{% static 'js/delete_note.js' %}"></script>
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" href='{% static 'css/base_style.css' %}'></link>
 </head>
 
 <body>
@@ -13,9 +21,10 @@
 <a href="{% url 'lmn:venue_list' %}">Venues</a>
 <a href="{% url 'lmn:artist_list' %}">Artists</a>
 <a href="{% url 'lmn:latest_notes' %}">Notes</a>
+<a href="{% url 'lmn:popular_shows' %}">Shows</a>
 
-{% if user.is_authenticated %}
-  <span id='welcome_user_msg'>You are logged in, <a href="{% url 'lmn:user_profile' user_pk=user.pk %}">{{ user.username }}</a>.  <a href="{% url 'lmn:logout' %}">Logout</a></span>
+{% if request.user.is_authenticated %}
+  <span id='welcome_user_msg'>You are logged in, <a href="{% url 'lmn:user_profile' user_pk=request.user.pk %}">{{ request.user.username }}</a>.  <a href="{% url 'lmn:logout' %}">Logout</a></span>
 
 {% else %}
 
@@ -27,6 +36,8 @@
 
 {% block content %}
 {% endblock %}
-
+{% if logout_message %}
+    <P id="logout_message">{{ logout_message }}</P>
+{% endif %}
 </body>
 </html>
