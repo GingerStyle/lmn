@@ -2,6 +2,7 @@ from django.test import TestCase
 
 
 
+
 from lmn.models import UserProfile, CustomUser as User
 
 from django.db import IntegrityError
