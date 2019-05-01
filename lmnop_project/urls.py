@@ -13,17 +13,26 @@ Including another URLconf
     1. Import the include() function: from django.conf.urls import url, include
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
-from django.urls import path, include
+
+from lmn import views, views_users
+
+from django.urls import path, include, re_path
 from django.contrib import admin
 from django.contrib.auth import views as auth_views
 from django.views.generic.edit import CreateView
 from django.contrib.auth.forms import UserCreationForm
-from lmn import views, views_users
+from lmn.views_autocomplete import VenueAutocomplete
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),    #Admin site
 
     path('', include('lmn.urls') ),
+
+    # Django Autocomplete-light calls reverse() on this path without passing a urlconfig
+    # argument. An easy fix is to list paths called on by Autocomplete here. 
+    re_path(r'^venue-autocomplete/$',
+        VenueAutocomplete.as_view(),
+         name='venue-autocomplete',)
 
 ]

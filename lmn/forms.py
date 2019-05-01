@@ -1,12 +1,17 @@
 from django import forms
-from .models import Note, CustomUser, UserProfile
+from .models import Note, CustomUser, UserProfile, Venue
 
 from django.contrib.auth.forms import UserCreationForm
 from django.forms import ValidationError
 
+from dal import autocomplete
+
 
 class VenueSearchForm(forms.Form):
-    search_name = forms.CharField(label='Venue Name', max_length=200)
+    search_name = forms.ModelChoiceField(
+        queryset=Venue.objects.all(),
+        widget=autocomplete.ModelSelect2(url='venue-autocomplete', )
+    )
 
 
 class ArtistSearchForm(forms.Form):
