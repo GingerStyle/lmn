@@ -104,7 +104,7 @@ class TestAddNotesWhenUserLoggedIn(TestCase):
 
         new_note_url = reverse('lmn:new_note', kwargs={'show_pk':1})
 
-        response = self.client.post(new_note_url, {'text':'ok', 'title':'blah blah' }, follow=True)
+        response = self.client.post(new_note_url, {'text':'ok', 'title':'blah blah', "rating": '5'}, follow=True)
 
         # Verify note is in database
         new_note_query = Note.objects.filter(text='ok', title='blah blah')
@@ -124,7 +124,7 @@ class TestAddNotesWhenUserLoggedIn(TestCase):
         initial_note_count = Note.objects.count()
 
         new_note_url = reverse('lmn:new_note', kwargs={'show_pk':1})
-        response = self.client.post(new_note_url, {'text':'ok', 'title':'blah blah' }, follow=True)
+        response = self.client.post(new_note_url, {'text':'ok', 'title':'blah blah', 'rating': 5})
         new_note = Note.objects.filter(text='ok', title='blah blah').first()
 
         self.assertRedirects(response, reverse('lmn:note_detail', kwargs={'note_pk': new_note.pk }))
@@ -145,6 +145,19 @@ class TestAddLikeNotes(TestCase):
         like = get_object_or_404(query, note=3).value
         self.assertEqual(like, 1)
         self.assertContains(response, 'Likes: 24')
+
+    def add_new_like_note(self):
+        self.client.force_login(CustomUser.objects.get(pk="1"))
+        response = self.client.post(reverse('lmn:like_note', kwargs={'note_pk': 3}), follow=True)
+        self.assertEqual(response.status_code, 200)
+        note = Note.objects.get(pk="3")
+        self.assertNotEqual(note.likes, 23)
+        self.assertEqual(note.likes, 24)
+        query = LikeNote.objects.filter(user=1)
+        like = get_object_or_404(query, note=3).value
+        self.assertEqual(like, 1)
+        self.assertContains(response, 'Likes: 24')
+
     def test_add_dislike_note_already_disliked(self):
         self.client.force_login(CustomUser.objects.get(pk="3"))
         response = self.client.post(reverse('lmn:dislike_note', kwargs={'note_pk': 3}), follow=True)

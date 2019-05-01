@@ -15,6 +15,7 @@ urlpatterns = [
     path('venues/detail/<int:venue_pk>/', views_venues.venue_detail, name='venue_detail'),
     path('venues/artists_at/<int:venue_pk>/', views_venues.artists_at_venue, name='artists_at_venue'),
 
+    path('shows/popular/', views_notes.popular_shows, name='popular_shows'),
     # Note related
     path('notes/popular/', views_notes.popular_notes, name='popular_notes'),
     path('notes/latest/', views_notes.latest_notes, name='latest_notes'),
@@ -36,7 +37,8 @@ urlpatterns = [
     path('user/profile/edit/', views_users.edit_profile, name='edit_profile'),
 
     # Account related
+
     path('accounts/login/', views_users.login_and_signup, name='login'),
-    path('accounts/logout/', auth_views.LogoutView.as_view(template_name='registration/logout.html'), name='logout'),
+    path('accounts/logout/', views_users.logout_user, name='logout'),
     path('register/', views_users.register, name='register'),
 ]

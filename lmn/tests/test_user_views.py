@@ -106,3 +106,18 @@ class TestRegistrationUser(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'lmn/users/user_profile.html')
 
+
+class TestLogoutUser(TestCase):
+
+    def test_logout_message(self):
+        self.client.post(reverse('lmn:register'),
+                                    {'username': 'sam12345', 'email': 'sam@sam.com', 'password1': 'feRpj4w4pso3az',
+                                     'password2': 'feRpj4w4pso3az', 'first_name': 'sam', 'last_name': 'sam'},
+                                    follow=True)
+        user = auth.get_user(self.client)
+        response = self.client.post(reverse('lmn:logout'), follow=True)
+        logged_out = response.wsgi_request.user
+        self.assertNotEqual(user, logged_out)
+        self.assertTemplateUsed(response, 'lmn/home.html')
+        self.assertContains(response, 'You have logged out. Come back soon!')
+

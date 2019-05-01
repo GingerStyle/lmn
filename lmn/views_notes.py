@@ -1,8 +1,9 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.http import Http404
+from django.core.exceptions import ObjectDoesNotExist
 from .models import Venue, Artist, Note, Show, LikeNote
 from .forms import VenueSearchForm, NewNoteForm, ArtistSearchForm, UserRegistrationForm
-
+from django.db.models import Count, Max
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login, logout
 
@@ -56,15 +57,16 @@ def add_note_like(request, note_pk):
     user = request.user
     try:
         query = LikeNote.objects.filter(note=note_pk)
-        like = get_object_or_404(query, user=user.pk)
+        like = query.get(user=user.pk)
         if like.value != 1:
             note.add_like()
         like.like()
-    except Http404:
-        like = LikeNote(note, user, value=0)
+    except LikeNote.DoesNotExist:
+        like = LikeNote(note=note, user=user, value=0)
+        like.save()
         like.like()
         note.add_like()
-    return render(request, 'lmn/notes/note_detail.html' , {'note' : note })
+    return render(request, 'lmn/notes/note_detail.html', {'note': note })
 
 @login_required
 def add_note_dislike(request, note_pk):
@@ -72,12 +74,13 @@ def add_note_dislike(request, note_pk):
     user = request.user
     try:
         query = LikeNote.objects.filter(note=note_pk)
-        like = get_object_or_404(query, user=user.pk)
+        like = query.get(user=user.pk)
         if like.value != -1:
             note.add_dislike()
         like.dislike()
-    except Http404:
-        like = LikeNote(note, user, value=0)
+    except LikeNote.DoesNotExist:
+        like = LikeNote(note=note, user=note, value=0)
+        like.save()
         like.dislike()
         note.add_dislike()
     return render(request, 'lmn/notes/note_detail.html', {'note': note})
@@ -113,3 +116,9 @@ def delete_note(request, note_pk):
         return redirect('lmn:latest_notes')
     Note.objects.filter(pk=note_pk).delete()
     return redirect('lmn:latest_notes')
+
+
+@login_required
+def popular_shows(request):
+    shows = Show.objects.annotate(notes=Count('note')).order_by('notes').reverse()
+    return render(request, 'lmn/shows/show_list.html', {'shows': shows})
