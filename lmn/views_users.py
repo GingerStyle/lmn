@@ -43,14 +43,14 @@ def login_and_signup(request):
         next = ''
         if 'url' in request.POST.keys():
             next = request.POST['url']
-        if loginForm.is_valid():
+        try:
             user = authenticate(username=request.POST['username'], password=request.POST['password'])
             login(request, user)
             if next != "":
                 return redirect(next)
             else:
                 return redirect(settings.LOGIN_REDIRECT_URL)
-        else:
+        except:
             message = 'Please enter a correct username and password. Note that both fields may be case-sensitive.'
             return render(request, 'registration/login.html', { 's_form' : signUpForm, 'l_form': loginForm,'message' : message } )
 
@@ -71,7 +71,7 @@ def register(request):
         if form.is_valid():
             user = form.save()
             user = authenticate(username=request.POST['username'], password=request.POST['password1'])
-            profile = UserProfile(userId=user.pk)
+            profile = UserProfile(userId=user)
             profile.save()
             login(request, user)
             if next != "":
