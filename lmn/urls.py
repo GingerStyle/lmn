@@ -11,7 +11,8 @@ urlpatterns = [
     path('', views.homepage, name='homepage'),
 
     # Path for autocomplete requests
-    re_path(r'^ajax_calls/search/', views.autocompleteModel),
+    re_path(r'^ajax_calls/search/venue-query', views.autocompleteModel, {'query_type': 'Venue'}),
+    re_path(r'^ajax_calls/search/artist-query', views.autocompleteModel, {'query_type': 'Artist'}),
 
     # Venue-related
     path('venues/list/', views_venues.venue_list, name='venue_list'),
