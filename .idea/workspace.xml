@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="3e803dfa-8e5c-4fa6-bf82-9ac5de0e7975" name="Default Changelist" comment="fixed liking system issue">
+    <list default="true" id="3e803dfa-8e5c-4fa6-bf82-9ac5de0e7975" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lmn/static/css/base_style.css" beforeDir="false" afterPath="$PROJECT_DIR$/lmn/static/css/base_style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lmn/templates/lmn/notes/note_detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/lmn/templates/lmn/notes/note_detail.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lmn/views_notes.py" beforeDir="false" afterPath="$PROJECT_DIR$/lmn/views_notes.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lmnop_project/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/lmnop_project/settings.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -15,7 +17,7 @@
     <SUITE FILE_PATH="coverage/lmn$Test__lmn_tests_test_note_views_TestAddLikeNotes_add_new_like_note.coverage" NAME="Test: lmn.tests.test_note_views.TestAddLikeNotes.add_new_like_note Coverage Results" MODIFIED="1556672075339" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/lmn$Test__lmn_tests_test_note_views_TestAddLikeNotes.coverage" NAME="Test: lmn.tests.test_note_views.TestAddLikeNotes Coverage Results" MODIFIED="1556672229172" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/lmn$Test__lmn_tests_test_show_views_MostPopularShow.coverage" NAME="Test: lmn.tests.test_show_views.MostPopularShow Coverage Results" MODIFIED="1556667615881" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
-    <SUITE FILE_PATH="coverage/lmn$Test__lmn_tests_test_note_views_TestEditNotes.coverage" NAME="Test: lmn.tests.test_note_views.TestEditNotes Coverage Results" MODIFIED="1556672777831" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/lmn$Test__lmn_tests_test_note_views_TestEditNotes.coverage" NAME="Test: lmn.tests.test_note_views.TestEditNotes Coverage Results" MODIFIED="1556685063315" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
   </component>
   <component name="DjangoConsoleOptions" custom-start-script="import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;import django; print('Django %s' % django.get_version())&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;if 'setup' in dir(django): django.setup()&#10;import django_manage_shell; django_manage_shell.run(PROJECT_ROOT)">
     <option name="myCustomStartScript" value="import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;import django; print('Django %s' % django.get_version())&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;if 'setup' in dir(django): django.setup()&#10;import django_manage_shell; django_manage_shell.run(PROJECT_ROOT)" />
@@ -25,19 +27,25 @@
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
           <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/lmn/templates/lmn/shows/show_list.html">
+            <entry file="file://$PROJECT_DIR$/lmn/forms.py">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="170">
-                  <caret line="10" column="39" selection-start-line="10" selection-start-column="39" selection-end-line="10" selection-end-column="39" />
+                  <caret line="13" lean-forward="true" selection-start-line="13" selection-end-line="13" />
+                  <folding>
+                    <element signature="e#0#24#0" expanded="true" />
+                  </folding>
                 </state>
               </provider>
             </entry>
           </file>
-          <file pinned="false" current-in-tab="false">
+          <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/lmnop_project/settings.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="201">
-                  <caret line="91" column="1" lean-forward="true" selection-start-line="91" selection-start-column="1" selection-end-line="91" selection-end-column="1" />
+                <state relative-caret-position="259">
+                  <caret line="95" lean-forward="true" selection-start-line="95" selection-end-line="95" />
+                  <folding>
+                    <element signature="e#309#331#0" expanded="true" />
+                  </folding>
                 </state>
               </provider>
             </entry>
@@ -45,8 +53,8 @@
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/lmn/tests/test_note_views.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="-204">
-                  <caret line="158" column="34" selection-start-line="158" selection-start-column="34" selection-end-line="158" selection-end-column="34" />
+                <state relative-caret-position="178">
+                  <caret line="194" column="43" lean-forward="true" selection-start-line="194" selection-start-column="43" selection-end-line="194" selection-end-column="43" />
                   <folding>
                     <element signature="e#0#40#0" expanded="true" />
                     <element signature="e#330#2636#0" />
@@ -59,8 +67,8 @@
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/lmn/templates/lmn/notes/note_detail.html">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="187">
-                  <caret line="23" column="15" lean-forward="true" selection-start-line="23" selection-start-column="15" selection-end-line="23" selection-end-column="15" />
+                <state relative-caret-position="221">
+                  <caret line="25" column="14" lean-forward="true" selection-start-line="25" selection-start-column="14" selection-end-line="25" selection-end-column="14" />
                 </state>
               </provider>
             </entry>
@@ -69,7 +77,7 @@
             <entry file="file://$PROJECT_DIR$/lmn/templates/lmn/users/user_profile.html">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="170">
-                  <caret line="10" column="18" lean-forward="true" selection-start-line="10" selection-start-column="18" selection-end-line="10" selection-end-column="18" />
+                  <caret line="10" column="18" selection-start-line="10" selection-start-column="18" selection-end-line="10" selection-end-column="18" />
                 </state>
               </provider>
             </entry>
@@ -77,10 +85,22 @@
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/lmn/views_users.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="357">
-                  <caret line="27" column="83" selection-start-line="27" selection-start-column="83" selection-end-line="27" selection-end-column="83" />
+                <state relative-caret-position="-864">
+                  <caret line="37" selection-start-line="37" selection-end-line="37" />
                   <folding>
-                    <element signature="e#0#64#0" expanded="true" />
+                    <element signature="e#0#119#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/lmn/urls.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="-51">
+                  <caret line="15" column="39" lean-forward="true" selection-start-line="15" selection-start-column="39" selection-end-line="15" selection-end-column="39" />
+                  <folding>
+                    <element signature="e#0#28#0" expanded="true" />
                   </folding>
                 </state>
               </provider>
@@ -89,17 +109,17 @@
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/lmn/templates/lmn/base.html">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="71">
-                  <caret line="38" lean-forward="true" selection-start-line="38" selection-end-line="38" />
+                <state relative-caret-position="238">
+                  <caret line="14" lean-forward="true" selection-start-line="14" selection-end-line="14" />
                 </state>
               </provider>
             </entry>
           </file>
-          <file pinned="false" current-in-tab="true">
+          <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/lmn/static/css/base_style.css">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="244">
-                  <caret line="31" column="1" lean-forward="true" selection-start-line="31" selection-start-column="1" selection-end-line="31" selection-end-column="1" />
+                  <caret line="28" selection-start-line="28" selection-end-line="28" />
                 </state>
               </provider>
             </entry>
@@ -111,8 +131,8 @@
           <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/lmn/views_notes.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="113">
-                  <caret line="78" column="24" lean-forward="true" selection-start-line="78" selection-start-column="24" selection-end-line="78" selection-end-column="24" />
+                <state relative-caret-position="255">
+                  <caret line="108" column="16" selection-start-line="108" selection-start-column="16" selection-end-line="108" selection-end-column="16" />
                   <folding>
                     <element signature="e#0#64#0" expanded="true" />
                   </folding>
@@ -121,19 +141,19 @@
             </entry>
           </file>
           <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/lmn/models.py">
+            <entry file="file://$PROJECT_DIR$/lmn/migrations/0001_initial.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="207">
-                  <caret line="51" column="20" lean-forward="true" selection-start-line="51" selection-start-column="20" selection-end-line="51" selection-end-column="20" />
+                <state relative-caret-position="170">
+                  <caret line="19" column="29" selection-start-line="19" selection-start-column="29" selection-end-line="19" selection-end-column="29" />
                 </state>
               </provider>
             </entry>
           </file>
           <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/lmn/static/js/delete_note.js">
+            <entry file="file://$PROJECT_DIR$/lmn/models.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="153">
-                  <caret line="9" lean-forward="true" selection-start-line="9" selection-end-line="9" />
+                <state relative-caret-position="238">
+                  <caret line="50" column="23" lean-forward="true" selection-start-line="50" selection-start-column="23" selection-end-line="50" selection-end-column="23" />
                 </state>
               </provider>
             </entry>
@@ -168,21 +188,21 @@
         <option value="$PROJECT_DIR$/lmn/tests/test_show_views.py" />
         <option value="$PROJECT_DIR$/lmn/tests/test_note_views.py" />
         <option value="$PROJECT_DIR$/lmn/fixtures/testing_likenotes.json" />
-        <option value="$PROJECT_DIR$/lmn/views_notes.py" />
-        <option value="$PROJECT_DIR$/lmnop_project/settings.py" />
         <option value="$PROJECT_DIR$/lmn/templates/lmn/users/user_profile.html" />
         <option value="$PROJECT_DIR$/lmn/views_users.py" />
-        <option value="$PROJECT_DIR$/lmn/templates/lmn/notes/note_detail.html" />
         <option value="$PROJECT_DIR$/lmn/static/js/delete_note.js" />
-        <option value="$PROJECT_DIR$/lmn/templates/lmn/base.html" />
         <option value="$PROJECT_DIR$/lmn/static/css/base_style.css" />
+        <option value="$PROJECT_DIR$/lmn/views_notes.py" />
+        <option value="$PROJECT_DIR$/lmn/templates/lmn/notes/note_detail.html" />
+        <option value="$PROJECT_DIR$/lmn/templates/lmn/base.html" />
+        <option value="$PROJECT_DIR$/lmnop_project/settings.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="949" />
-    <option name="width" value="980" />
-    <option name="height" value="1031" />
+    <option name="x" value="948" />
+    <option name="width" value="981" />
+    <option name="height" value="1092" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -225,20 +245,6 @@
               <item name="lmn" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
               <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
               <item name="lmn" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="static" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="css" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-            </path>
-            <path>
-              <item name="lmn" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
-              <item name="lmn" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="static" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="js" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-            </path>
-            <path>
-              <item name="lmn" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
-              <item name="lmn" type="9f88c78c:ScopeViewTreeModel$FileNode" />
               <item name="templates" type="9f88c78c:ScopeViewTreeModel$FileNode" />
             </path>
             <path>
@@ -255,6 +261,13 @@
               <item name="templates" type="9f88c78c:ScopeViewTreeModel$FileNode" />
               <item name="lmn" type="9f88c78c:ScopeViewTreeModel$FileNode" />
               <item name="users" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
+            <path>
+              <item name="lmn" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
+              <item name="lmn" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="templates" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="registration" type="9f88c78c:ScopeViewTreeModel$FileNode" />
             </path>
             <path>
               <item name="lmn" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
@@ -277,7 +290,8 @@
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../capstoneproject5" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../DjangoWishList" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -421,6 +435,31 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="lmn" type="Python.DjangoServer" factoryName="Django server">
+      <module name="lmn" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+        <env name="DATABASE_URL" value="postgres://tbywnbylerkcbb:9b4fad7b6aa35ecc17ba06b426d49354daa688323922555b872eb8e7bb066001@ec2-50-17-246-114.compute-1.amazonaws.com:5432/dcs7mefe8c66bq " />
+        <env name="DJANGO_SETTINGS_MODULE" value="lmnop_project.settings" />
+      </envs>
+      <option name="SDK_HOME" value="C:\Users\qaali\PycharmProjects\lmn\venv\Scripts\python.exe" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="launchJavascriptDebuger" value="false" />
+      <option name="port" value="8000" />
+      <option name="host" value="127.0.0.1" />
+      <option name="additionalOptions" value="" />
+      <option name="browserUrl" value="" />
+      <option name="runTestServer" value="false" />
+      <option name="runNoReload" value="false" />
+      <option name="useCustomRunCommand" value="false" />
+      <option name="customRunCommand" value="" />
+      <method v="2" />
+    </configuration>
     <configuration default="true" type="Python.FlaskServer" factoryName="Flask server">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -465,6 +504,7 @@
       <method v="2" />
     </configuration>
     <list>
+      <item itemvalue="Django server.lmn" />
       <item itemvalue="Django tests.Test: lmn.tests.test_show_views.MostPopularShow" />
       <item itemvalue="Django tests.Test: lmn.tests.test_note_views.TestAddLikeNotes" />
       <item itemvalue="Django tests.Test: lmn.tests.test_note_views.TestAddLikeNotes.add_new_like_note" />
@@ -493,7 +533,7 @@
       <updated>1555556078698</updated>
       <workItem from="1555556090383" duration="216000" />
       <workItem from="1556047405254" duration="2625000" />
-      <workItem from="1556567239942" duration="39236000" />
+      <workItem from="1556567239942" duration="47156000" />
     </task>
     <task id="LOCAL-00002" summary="heroku config">
       <created>1556585363277</created>
@@ -579,55 +619,68 @@
       <option name="project" value="LOCAL" />
       <updated>1556677211187</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="fixed liking system issue">
+      <created>1556677709299</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1556677709299</updated>
+    </task>
+    <task id="LOCAL-00015" summary="logout message was not showing got it fixed">
+      <created>1556679039614</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1556679039614</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="Test__lmn_tests_test_note_views_TestAddLikeNotes_add_new_like_note - 2019.04.30 at 19h 48m 22s.xml">
-      <configuration name="Test: lmn.tests.test_note_views.TestAddLikeNotes.add_new_like_note" configurationId="DjangoTestsConfigurationType" />
-    </history-entry>
-    <history-entry file="Test__lmn_tests_test_note_views_TestAddLikeNotes_add_new_like_note - 2019.04.30 at 19h 49m 35s.xml">
-      <configuration name="Test: lmn.tests.test_note_views.TestAddLikeNotes.add_new_like_note" configurationId="DjangoTestsConfigurationType" />
-    </history-entry>
-    <history-entry file="Test__lmn_tests_test_note_views_TestAddLikeNotes_add_new_like_note - 2019.04.30 at 19h 55m 52s.xml">
-      <configuration name="Test: lmn.tests.test_note_views.TestAddLikeNotes.add_new_like_note" configurationId="DjangoTestsConfigurationType" />
-    </history-entry>
-    <history-entry file="Test__lmn_tests_test_note_views_TestAddLikeNotes - 2019.04.30 at 19h 57m 22s.xml">
-      <configuration name="Test: lmn.tests.test_note_views.TestAddLikeNotes" configurationId="DjangoTestsConfigurationType" />
-    </history-entry>
-    <history-entry file="Test__lmn_tests_test_note_views_TestEditNotes - 2019.04.30 at 20h 04m 04s.xml">
-      <configuration name="Test: lmn.tests.test_note_views.TestEditNotes" configurationId="DjangoTestsConfigurationType" />
-    </history-entry>
-    <history-entry file="Test__lmn_tests_test_note_views_TestEditNotes - 2019.04.30 at 20h 04m 22s.xml">
-      <configuration name="Test: lmn.tests.test_note_views.TestEditNotes" configurationId="DjangoTestsConfigurationType" />
-    </history-entry>
-    <history-entry file="Test__lmn_tests_test_note_views_TestEditNotes - 2019.04.30 at 20h 04m 47s.xml">
-      <configuration name="Test: lmn.tests.test_note_views.TestEditNotes" configurationId="DjangoTestsConfigurationType" />
-    </history-entry>
-    <history-entry file="Test__lmn_tests_test_note_views_TestEditNotes - 2019.04.30 at 20h 05m 24s.xml">
-      <configuration name="Test: lmn.tests.test_note_views.TestEditNotes" configurationId="DjangoTestsConfigurationType" />
-    </history-entry>
     <history-entry file="Test__lmn_tests_test_note_views_TestEditNotes - 2019.04.30 at 20h 06m 02s.xml">
       <configuration name="Test: lmn.tests.test_note_views.TestEditNotes" configurationId="DjangoTestsConfigurationType" />
     </history-entry>
     <history-entry file="Test__lmn_tests_test_note_views_TestEditNotes - 2019.04.30 at 20h 06m 24s.xml">
       <configuration name="Test: lmn.tests.test_note_views.TestEditNotes" configurationId="DjangoTestsConfigurationType" />
     </history-entry>
+    <history-entry file="Test__lmn_tests_test_note_views_TestEditNotes - 2019.04.30 at 22h 49m 55s.xml">
+      <configuration name="Test: lmn.tests.test_note_views.TestEditNotes" configurationId="DjangoTestsConfigurationType" />
+    </history-entry>
+    <history-entry file="Test__lmn_tests_test_note_views_TestEditNotes - 2019.04.30 at 22h 51m 02s.xml">
+      <configuration name="Test: lmn.tests.test_note_views.TestEditNotes" configurationId="DjangoTestsConfigurationType" />
+    </history-entry>
+    <history-entry file="Test__lmn_tests_test_note_views_TestEditNotes - 2019.04.30 at 22h 51m 49s.xml">
+      <configuration name="Test: lmn.tests.test_note_views.TestEditNotes" configurationId="DjangoTestsConfigurationType" />
+    </history-entry>
+    <history-entry file="Test__lmn_tests_test_note_views_TestEditNotes - 2019.04.30 at 23h 24m 57s.xml">
+      <configuration name="Test: lmn.tests.test_note_views.TestEditNotes" configurationId="DjangoTestsConfigurationType" />
+    </history-entry>
+    <history-entry file="Test__lmn_tests_test_note_views_TestEditNotes - 2019.04.30 at 23h 26m 03s.xml">
+      <configuration name="Test: lmn.tests.test_note_views.TestEditNotes" configurationId="DjangoTestsConfigurationType" />
+    </history-entry>
+    <history-entry file="Test__lmn_tests_test_note_views_TestEditNotes - 2019.04.30 at 23h 29m 57s.xml">
+      <configuration name="Test: lmn.tests.test_note_views.TestEditNotes" configurationId="DjangoTestsConfigurationType" />
+    </history-entry>
+    <history-entry file="Test__lmn_tests_test_note_views_TestEditNotes - 2019.04.30 at 23h 31m 03s.xml">
+      <configuration name="Test: lmn.tests.test_note_views.TestEditNotes" configurationId="DjangoTestsConfigurationType" />
+    </history-entry>
+    <history-entry file="Test__lmn_tests_test_note_views_TestEditNotes - 2019.04.30 at 23h 32m 48s.xml">
+      <configuration name="Test: lmn.tests.test_note_views.TestEditNotes" configurationId="DjangoTestsConfigurationType" />
+    </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="42846000" />
+    <option name="totallyTimeSpent" value="50766000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1295" height="695" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.11336032" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.11336032" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.3285968" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.39964476" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.38010657" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -635,7 +688,7 @@
       <window_info anchor="bottom" id="Version Control" order="8" weight="0.3285968" />
       <window_info anchor="bottom" id="Database Changes" order="9" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
-      <window_info anchor="bottom" id="Terminal" order="11" visible="true" weight="0.3410302" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="11" visible="true" weight="0.312611" />
       <window_info anchor="bottom" id="Python Console" order="12" weight="0.3285968" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -679,7 +732,69 @@
     <MESSAGE value="fixing delete button on js" />
     <MESSAGE value="fixed issue with liking system not working" />
     <MESSAGE value="fixed liking system issue" />
-    <option name="LAST_COMMIT_MESSAGE" value="fixed liking system issue" />
+    <MESSAGE value="logout message was not showing got it fixed" />
+    <option name="LAST_COMMIT_MESSAGE" value="logout message was not showing got it fixed" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/lmn/views_notes.py</url>
+          <line>101</line>
+          <option name="timeStamp" value="25" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/lmn/views_notes.py</url>
+          <line>104</line>
+          <option name="timeStamp" value="27" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/lmn/views_notes.py</url>
+          <line>102</line>
+          <option name="timeStamp" value="28" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/lmn/views_notes.py</url>
+          <line>99</line>
+          <option name="timeStamp" value="29" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/lmn/views_notes.py</url>
+          <line>97</line>
+          <option name="timeStamp" value="30" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/lmn/views_notes.py</url>
+          <line>96</line>
+          <option name="timeStamp" value="31" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/lmn/tests/test_note_views.py</url>
+          <line>187</line>
+          <option name="timeStamp" value="32" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/lmn/tests/test_note_views.py</url>
+          <line>189</line>
+          <option name="timeStamp" value="33" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/lmn/tests/test_note_views.py</url>
+          <line>190</line>
+          <option name="timeStamp" value="34" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/lmn/tests/test_note_views.py</url>
+          <line>193</line>
+          <option name="timeStamp" value="35" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/lmn/tests/test_note_views.py</url>
+          <line>195</line>
+          <option name="timeStamp" value="36" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/lmn/migrations/__init__.py">
@@ -705,16 +820,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lmn/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="17" column="76" selection-start-line="17" selection-start-column="76" selection-end-line="17" selection-end-column="76" />
-          <folding>
-            <element signature="e#0#28#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/lmn/templates/lmn/notes/note_list.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="169">
@@ -726,13 +831,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="104">
           <caret line="69" selection-start-line="69" selection-end-line="69" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lmn/migrations/0001_initial.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="69" column="34" selection-start-line="69" selection-start-column="34" selection-end-line="69" selection-end-column="34" />
         </state>
       </provider>
     </entry>
@@ -780,27 +878,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/venv/Lib/site-packages/psycopg2/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="112">
-          <caret line="129" selection-start-line="129" selection-end-line="129" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/venv/Lib/site-packages/django/contrib/auth/decorators.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="20" selection-start-line="20" selection-end-line="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/venv/Lib/site-packages/django/db/backends/utils.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="104">
-          <caret line="84" selection-start-line="84" selection-end-line="84" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/lmn/fixtures/testing_likenotes.json">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="204">
@@ -815,17 +892,131 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lmnop_project/settings.py">
+    <entry file="file://$PROJECT_DIR$/lmn/templates/registration/login.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="201">
-          <caret line="91" column="1" lean-forward="true" selection-start-line="91" selection-start-column="1" selection-end-line="91" selection-end-column="1" />
+        <state relative-caret-position="156">
+          <caret line="11" column="31" lean-forward="true" selection-start-line="11" selection-start-column="31" selection-end-line="11" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lmn/templates/lmn/home.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" lean-forward="true" selection-start-line="9" selection-end-line="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lmn/static/css/base_style.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="244">
+          <caret line="28" selection-start-line="28" selection-end-line="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lmn/templates/lmn/users/user_profile.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" column="18" selection-start-line="10" selection-start-column="18" selection-end-line="10" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lmn/views_users.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-864">
+          <caret line="37" selection-start-line="37" selection-end-line="37" />
+          <folding>
+            <element signature="e#0#119#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lmn/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-51">
+          <caret line="15" column="39" lean-forward="true" selection-start-line="15" selection-start-column="39" selection-end-line="15" selection-end-column="39" />
+          <folding>
+            <element signature="e#0#28#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lmn/forms.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="13" lean-forward="true" selection-start-line="13" selection-end-line="13" />
+          <folding>
+            <element signature="e#0#24#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lmn/migrations/0001_initial.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="19" column="29" selection-start-line="19" selection-start-column="29" selection-end-line="19" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lmn/static/js/delete_note.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="1" lean-forward="true" selection-start-line="8" selection-start-column="1" selection-end-line="8" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lmn/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="50" column="23" lean-forward="true" selection-start-line="50" selection-start-column="23" selection-end-line="50" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/venv/Lib/site-packages/django/db/utils.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="170" selection-start-line="170" selection-end-line="170" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/venv/Lib/site-packages/django/contrib/auth/decorators.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="21" column="24" selection-start-line="21" selection-start-column="24" selection-end-line="21" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/venv/Lib/site-packages/psycopg2/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="100">
+          <caret line="129" selection-start-line="129" selection-end-line="129" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/venv/Lib/site-packages/django/db/backends/utils.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="104">
+          <caret line="84" selection-start-line="84" selection-end-line="84" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lmn/templates/lmn/notes/note_detail.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="25" column="14" lean-forward="true" selection-start-line="25" selection-start-column="14" selection-end-line="25" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lmn/templates/lmn/base.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="14" lean-forward="true" selection-start-line="14" selection-end-line="14" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/lmn/tests/test_note_views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-204">
-          <caret line="158" column="34" selection-start-line="158" selection-start-column="34" selection-end-line="158" selection-end-column="34" />
+        <state relative-caret-position="178">
+          <caret line="194" column="43" lean-forward="true" selection-start-line="194" selection-start-column="43" selection-end-line="194" selection-end-column="43" />
           <folding>
             <element signature="e#0#40#0" expanded="true" />
             <element signature="e#330#2636#0" />
@@ -834,62 +1025,20 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lmn/templates/lmn/users/user_profile.html">
+    <entry file="file://$PROJECT_DIR$/lmnop_project/settings.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" column="18" lean-forward="true" selection-start-line="10" selection-start-column="18" selection-end-line="10" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lmn/views_users.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="27" column="83" selection-start-line="27" selection-start-column="83" selection-end-line="27" selection-end-column="83" />
+        <state relative-caret-position="259">
+          <caret line="95" lean-forward="true" selection-start-line="95" selection-end-line="95" />
           <folding>
-            <element signature="e#0#64#0" expanded="true" />
+            <element signature="e#309#331#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lmn/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="207">
-          <caret line="51" column="20" lean-forward="true" selection-start-line="51" selection-start-column="20" selection-end-line="51" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lmn/templates/lmn/notes/note_detail.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="23" column="15" lean-forward="true" selection-start-line="23" selection-start-column="15" selection-end-line="23" selection-end-column="15" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lmn/static/js/delete_note.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" lean-forward="true" selection-start-line="9" selection-end-line="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lmn/templates/lmn/base.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="71">
-          <caret line="38" lean-forward="true" selection-start-line="38" selection-end-line="38" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lmn/static/css/base_style.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="244">
-          <caret line="31" column="1" lean-forward="true" selection-start-line="31" selection-start-column="1" selection-end-line="31" selection-end-column="1" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/lmn/views_notes.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="113">
-          <caret line="78" column="24" lean-forward="true" selection-start-line="78" selection-start-column="24" selection-end-line="78" selection-end-column="24" />
+        <state relative-caret-position="255">
+          <caret line="108" column="16" selection-start-line="108" selection-start-column="16" selection-end-line="108" selection-end-column="16" />
           <folding>
             <element signature="e#0#64#0" expanded="true" />
           </folding>
