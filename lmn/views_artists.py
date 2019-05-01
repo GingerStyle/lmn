@@ -21,7 +21,7 @@ def venues_for_artist(request, artist_pk):   # pk = artist_pk
 
 def artist_list(request):
     form = ArtistSearchForm()
-    search_name = request.GET.get('search_name')
+    search_name = request.POST.get('search_name')
     if search_name:
         artists = Artist.objects.filter(name__icontains=search_name).order_by('name')
     else:
