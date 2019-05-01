@@ -12,7 +12,7 @@ def homepage(request):
 def autocompleteModel(request):
     if request.is_ajax():
         q = request.GET.get('term', '')
-        search_qs = Venue.objects.filter(name__istartswith=q)
+        search_qs = Venue.objects.filter(name__icontains=q)
         results=[]
         for r in search_qs:
             results.append(r.name)
