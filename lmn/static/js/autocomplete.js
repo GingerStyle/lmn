@@ -1,5 +1,6 @@
 // Code at https://medium.com/@ninajlu/django-ajax-jquery-search-autocomplete-d4b4bf6494dd
 
+// Changes request URL based on the template this script is called from
 let queryType = $('.query-type').attr('id');
 
 $(document).ready(function() {
