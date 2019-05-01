@@ -1,5 +1,6 @@
 {% extends 'lmn/base.html' %}
 {% block content %}
+{% load static %}
 
 <h2>Venue List</h2>
 
@@ -12,34 +13,8 @@
         <input type="submit" value="Search"  class="btn btn-default btn-submit submit-search">
     </form>
 
-    <script>
-     // Code for much of this autocomplete functionality at
-     // https://medium.com/@ninajlu/django-ajax-jquery-search-autocomplete-d4b4bf6494dd
-     $(document).ready(function() {
-         $("#txtSearch").autocomplete({
-             source: "/ajax_calls/search/",
-             minLength: 2,
-             open: function() {
-                 setTimeout(function() {
-                     $('.ui-autocomplete').css('z-index', 99);
-                 }, 0);
-             }
-         });
+    <script src="{% static 'js/autocomplete.js' %}"> </script>
 
-         // $(".submit-search").on('click', function() {
-         //    $.post(
-         //        url='venues/list/',
-         //        data={
-        //             search_name: $('#txtSearch').val()
-        //         }
-       //      )
-      //   }); 
-     });
-    </script>
-    <!-- The form fields are built from the definition in forms.py -->
-    <!-- <form action="{% url 'lmn:venue_list' %}"> -->
-       <!-- {{ form }} -->
-        <!-- <input type='submit' value='Search'/>  -->
 </form>
 </div>
 
