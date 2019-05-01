@@ -14,6 +14,7 @@ from django.utils import timezone
 def new_note(request, show_pk):
 
     show = get_object_or_404(Show, pk=show_pk)
+    artists = show.artists.all()
 
     if request.method == 'POST' :
 
@@ -29,7 +30,7 @@ def new_note(request, show_pk):
     else :
         form = NewNoteForm()
 
-    return render(request, 'lmn/notes/new_note.html' , { 'form' : form , 'show':show })
+    return render(request, 'lmn/notes/new_note.html' , { 'form' : form , 'show':show , 'artists': artists})
 
 
 
@@ -49,7 +50,9 @@ def notes_for_show(request, show_pk):   # pk = show pk
 
 def note_detail(request, note_pk):
     note = get_object_or_404(Note, pk=note_pk)
-    return render(request, 'lmn/notes/note_detail.html' , {'note' : note })
+    show = get_object_or_404(Show, pk=note.show_id)
+    artists = show.artists.all()
+    return render(request, 'lmn/notes/note_detail.html' , {'note' : note, 'artists':artists})
 
 @login_required
 def add_note_like(request, note_pk):
@@ -94,6 +97,7 @@ def popular_notes(request):
 def edit_note(request, note_pk):
     note = Note.objects.get(pk=note_pk)
     show = Show.objects.get(pk=note.show_id)
+    artists = show.artists.all()
     if request.user!=note.user:
         return redirect('lmn:latest_notes')
     if request.method=='POST':
@@ -106,7 +110,7 @@ def edit_note(request, note_pk):
             return redirect('lmn:note_detail', note_pk=note.pk)
     else:
         form = NewNoteForm(instance=note)
-        return render(request, 'lmn/notes/edit_note.html', {'show': show, 'note': note, 'form': form})
+        return render(request, 'lmn/notes/edit_note.html', {'show': show, 'note': note, 'form': form, 'artists':artists})
 
 
 @login_required
