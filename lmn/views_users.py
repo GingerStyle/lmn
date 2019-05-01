@@ -37,6 +37,8 @@ def register(request):
         if form.is_valid():
             user = form.save()
             user = authenticate(username=request.POST['username'], password=request.POST['password1'])
+            profile = UserProfile(userId=user.pk)
+            profile.save()
             login(request, user)
             return redirect('lmn:homepage')
 
