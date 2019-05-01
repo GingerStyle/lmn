@@ -11,7 +11,7 @@
     },
 
     {"model" : "lmn.note", "pk" : 2 , "fields" :
-      { "show" : "1",
+      { "show" : "2",
         "user" : "2",
         "title" : "awesome",
         "text" : "yay!",

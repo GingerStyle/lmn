@@ -146,4 +146,3 @@ And this when you start a new shell; or set it permanently in .bash_profile
 
 `export DYLD_FALLBACK_LIBRARY_PATH=/Library/PostgreSQL/9.5/lib:$DYLD_LIBRARY_PATH`
 
-Add CIExtension() to migration file. import from django.contrib.postgres.operations

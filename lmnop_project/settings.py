@@ -44,6 +44,7 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -80,18 +81,18 @@ WSGI_APPLICATION = 'lmnop_project.wsgi.application'
 
 DATABASES = {
 
-'default': {
+'default': '''{
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'lmnop',
         'USER': 'lmnop',
         'PASSWORD': os.environ.get('LMNOP_DB_PW'),
         'HOST': 'localhost',
         'PORT': '5432'
-    }
+    }'''
 }
 
-#db_from_env = dj_database_url.config(default=config('DATABASE_URL'), conn_max_age=600, ssl_require=True)
-#DATABASES['default'] = db_from_env
+db_from_env = dj_database_url.config(default=config('DATABASE_URL'), conn_max_age=600, ssl_require=True)
+DATABASES['default'] = db_from_env
 
 
 
@@ -135,8 +136,12 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.9/howto/static-files/
 
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, 'static'),
+)
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 # Where to send user after successful login if no other page is provided.
 # Should provide the user object.
 LOGIN_REDIRECT_URL = 'lmn:my_user_profile'

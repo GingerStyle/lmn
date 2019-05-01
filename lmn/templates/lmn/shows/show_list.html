@@ -1,0 +1,25 @@
+{% extends 'lmn/base.html'%}
+{% block content %}
+<h2>Popular Shows</h2>
+
+
+{% for show in shows %}
+
+<div id="show_{{ show.pk }}">
+  <h3 class="show_title">{{ show.title }}</h3>
+    <p class="show_notes">Amount of notes:{{ show.notes }}</p>
+  <p class="show_info"><a href="{% url 'lmn:notes_for_show' show_pk=show.pk %}">Notes for the show</a></p>
+  <hr>
+</div>
+{% empty %}
+
+<p>No shows.</p>
+
+{% endfor %}
+
+<!-- If this is a list of notes for one show,
+display button to add new note for that show. -->
+
+
+
+{% endblock %}
