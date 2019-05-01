@@ -3,6 +3,8 @@ from django.conf import settings
 from django.contrib.postgres import fields
 from django.contrib.auth.models import AbstractUser, BaseUserManager
 import datetime
+from django.contrib.contenttypes.models import ContentType
+from django.contrib.contenttypes.fields import GenericForeignKey
 
 # Every model gets a primary key field by default.
 
@@ -112,6 +114,7 @@ class CustomUser(AbstractUser):
         return self.username
 
 
+
 class UserProfile(models.Model):
     favorite_band = models.CharField(max_length=128, blank=True)
     birthday = models.DateField(blank=True)
@@ -133,3 +136,4 @@ class LikeNote(models.Model):
     def like(self):
         self.value = 1
         self.save()
+

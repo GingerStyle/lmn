@@ -23,7 +23,6 @@ from lmn import views, views_users
 
 urlpatterns = [
     path('admin/', admin.site.urls),    #Admin site
-
     path('', include('lmn.urls') ),
 
 ]
