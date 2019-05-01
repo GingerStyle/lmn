@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.http import Http404
+from django.core.exceptions import ObjectDoesNotExist
 from .models import Venue, Artist, Note, Show, LikeNote
 from .forms import VenueSearchForm, NewNoteForm, ArtistSearchForm, UserRegistrationForm
 from django.db.models import Count, Max
@@ -61,10 +62,11 @@ def add_note_like(request, note_pk):
             note.add_like()
         like.like()
     except LikeNote.DoesNotExist:
-        like = LikeNote(note, user, value=0)
+        like = LikeNote(note=note, user=user, value=0)
+        like.save()
         like.like()
         note.add_like()
-    return render(request, 'lmn/notes/note_detail.html' , {'note' : note })
+    return render(request, 'lmn/notes/note_detail.html', {'note': note })
 
 @login_required
 def add_note_dislike(request, note_pk):
@@ -77,7 +79,8 @@ def add_note_dislike(request, note_pk):
             note.add_dislike()
         like.dislike()
     except LikeNote.DoesNotExist:
-        like = LikeNote(note, user, value=0)
+        like = LikeNote(note=note, user=note, value=0)
+        like.save()
         like.dislike()
         note.add_dislike()
     return render(request, 'lmn/notes/note_detail.html', {'note': note})
