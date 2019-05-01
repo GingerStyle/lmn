@@ -1,4 +1,5 @@
 {% extends 'lmn/base.html' %}
+{% load static %}
 {% block content %}
 
 
@@ -21,8 +22,9 @@
     {% else %}
         <a href={% url 'lmn:like_note' note_pk=note.id %}><span class="glyphicon glyphicon-thumbs-up" id="note_thumbs_up"></span></a>
         <a href={% url 'lmn:dislike_note' note_pk=note.id %}><span class="glyphicon glyphicon-thumbs-down" id="note_thumbs_down"></span></a>
-    {% endif %}
-{% endblock %}
+        {% endif %}
+        <script src="{% static 'js/delete_note.js' %}"></script>
+        {% endblock %}
 {% block script%}
 
 {% endblock %}
