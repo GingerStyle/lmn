@@ -18,14 +18,15 @@ body {
   text-align: right;
 }
 
+#logout_message {
+  color: red;
+  font-size: 17px;
+  text-align: center;
+
 #edit_profile{
   float: right;
 }
 
 #notes_user_profile{
   font-size: 150%;
-}
-
-#popular_notes_link{
-  position: relative;
 }

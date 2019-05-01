@@ -1,4 +1,8 @@
+from django.conf import settings
+from .models import Venue, Artist, Note, Show, CustomUser
+from .forms import VenueSearchForm, NewNoteForm, ArtistSearchForm, UserRegistrationForm
 from django.shortcuts import render, redirect, get_object_or_404
+
 
 from .models import Venue, Artist, Note, Show, CustomUser, UserProfile
 from .forms import UserRegistrationForm, UserProfileForm
@@ -50,6 +54,13 @@ def register(request):
     else:
         form = UserRegistrationForm()
         return render(request, 'registration/register.html', { 'form' : form } )
+
+
+
+def logout_user(request):
+    logout_message = 'You have logged out. Come back soon!'
+    logout(request)
+    return render(request, 'lmn/home.html', {'logout_message': logout_message})
 
 @login_required
 def edit_profile(request):
