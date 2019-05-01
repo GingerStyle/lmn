@@ -1,6 +1,6 @@
-from django.urls import path
 from . import views, views_artists, views_venues, views_notes, views_users
 
+from django.urls import path, re_path
 from django.contrib.auth import views as auth_views
 
 
@@ -9,6 +9,10 @@ app_name = 'lmn'
 urlpatterns = [
 
     path('', views.homepage, name='homepage'),
+
+    # Path for autocomplete requests
+    re_path(r'^ajax_calls/search/venue-query', views.autocompleteModel, {'query_type': 'Venue'}),
+    re_path(r'^ajax_calls/search/artist-query', views.autocompleteModel, {'query_type': 'Artist'}),
 
     # Venue-related
     path('venues/list/', views_venues.venue_list, name='venue_list'),

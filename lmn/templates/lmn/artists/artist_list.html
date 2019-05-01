@@ -1,13 +1,20 @@
 {% extends 'lmn/base.html' %}
 {% block content %}
+{% load static %}
 
 <h2>Artist List</h2>
 
 <P>Artist Search</p>
-  <form action="{% url 'lmn:artist_list' %}">
-    {{ form }}
-    <input type='submit' value='Search'>
-  </form>
+
+    <form id="search" method="POST" action="{% url 'lmn:artist_list' %}">
+        {% csrf_token %}
+        <input type="text" class="form-control" id="txtSearch" name="search_name">
+        <input type="submit" value="Search"  class="btn btn-default btn-submit submit-search">
+    </form>
+
+<!-- div below is used to modify the url that autocomplete.js is passed -->
+    <div class="query-type" id="artist-query"></div>
+    <script src="{% static 'js/autocomplete.js' %}"> </script>
 
 
 {% if search_term %}

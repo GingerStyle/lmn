@@ -13,7 +13,7 @@ from django.utils import timezone
 def venue_list(request):
 
     form = VenueSearchForm()
-    search_name = request.GET.get('search_name')
+    search_name = request.POST.get('search_name')
 
     if search_name:
         #search for this venue, display results
