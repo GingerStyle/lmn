@@ -1,12 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="3e803dfa-8e5c-4fa6-bf82-9ac5de0e7975" name="Default Changelist" comment="fixed issue where image was not displayed">
+    <list default="true" id="3e803dfa-8e5c-4fa6-bf82-9ac5de0e7975" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lmn/migrations/0001_initial.py" beforeDir="false" afterPath="$PROJECT_DIR$/lmn/migrations/0001_initial.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lmn/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/lmn/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lmn/views_users.py" beforeDir="false" afterPath="$PROJECT_DIR$/lmn/views_users.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lmnop_project/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/lmnop_project/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lmn/templates/lmn/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/lmn/templates/lmn/base.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -78,30 +75,6 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/lmn/views_notes.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-579">
-              <caret line="59" column="23" selection-start-line="59" selection-start-column="23" selection-end-line="59" selection-end-column="23" />
-              <folding>
-                <element signature="e#0#64#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/lmnop_project/settings.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="274">
-              <caret line="97" selection-start-line="97" selection-end-line="97" />
-              <folding>
-                <element signature="e#309#331#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/lmn/views_users.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="340">
@@ -109,6 +82,15 @@
               <folding>
                 <element signature="e#0#119#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/lmn/templates/lmn/base.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="323">
+              <caret line="19" lean-forward="true" selection-start-line="19" selection-end-line="19" />
             </state>
           </provider>
         </entry>
@@ -122,7 +104,7 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/lmn/migrations/0001_initial.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="221">
@@ -130,6 +112,15 @@
               <folding>
                 <element signature="e#47#79#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Procfile">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="17">
+              <caret line="1" column="33" lean-forward="true" selection-start-line="1" selection-start-column="33" selection-end-line="1" selection-end-column="33" />
             </state>
           </provider>
         </entry>
@@ -163,7 +154,6 @@
         <option value="$PROJECT_DIR$/lmn/templates/lmn/users/user_profile.html" />
         <option value="$PROJECT_DIR$/lmn/static/js/delete_note.js" />
         <option value="$PROJECT_DIR$/lmn/static/css/base_style.css" />
-        <option value="$PROJECT_DIR$/lmn/templates/lmn/base.html" />
         <option value="$PROJECT_DIR$/lmn/templates/lmn/notes/edit_note.html" />
         <option value="$PROJECT_DIR$/lmn/templates/lmn/notes/new_note.html" />
         <option value="$PROJECT_DIR$/lmn/views_notes.py" />
@@ -172,6 +162,7 @@
         <option value="$PROJECT_DIR$/lmn/migrations/0001_initial.py" />
         <option value="$PROJECT_DIR$/lmn/views_users.py" />
         <option value="$PROJECT_DIR$/lmn/models.py" />
+        <option value="$PROJECT_DIR$/lmn/templates/lmn/base.html" />
       </list>
     </option>
   </component>
@@ -273,7 +264,7 @@
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../DjangoWishList" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PythonContentEntriesConfigurable" />
   </component>
   <component name="RunDashboard">
@@ -625,7 +616,21 @@
       <option name="project" value="LOCAL" />
       <updated>1556686050597</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="fixed issue where image was not displayed">
+      <created>1556740019249</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1556740019249</updated>
+    </task>
+    <task id="LOCAL-00018" summary="fixed issue where image was not displayed">
+      <created>1556740367268</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1556740367268</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -661,7 +666,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="58423000" />
+    <option name="totallyTimeSpent" value="59526000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1295" height="695" extended-state="6" />
@@ -855,13 +860,6 @@
     <entry file="file://$PROJECT_DIR$/requirements.txt">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/Procfile">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="1" column="33" selection-start-line="1" selection-start-column="33" selection-end-line="1" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/lmn/fixtures/testing_notes.json">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="238">
@@ -985,13 +983,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lmn/templates/lmn/base.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="16" selection-start-line="16" selection-end-line="16" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/lmn/static/css/base_style.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="305">
@@ -1065,6 +1056,20 @@
           <folding>
             <element signature="e#47#79#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Procfile">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="1" column="33" lean-forward="true" selection-start-line="1" selection-start-column="33" selection-end-line="1" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lmn/templates/lmn/base.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="19" lean-forward="true" selection-start-line="19" selection-end-line="19" />
         </state>
       </provider>
     </entry>

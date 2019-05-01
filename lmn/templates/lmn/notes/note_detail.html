@@ -22,6 +22,10 @@
     {% if user == note.user %}
         <a role="button" href="{% url 'lmn:edit_note' note_pk=note.pk %}" class="btn btn-warning" id="edit_note_button">Edit Note</a>
         <a role="button" href="{% url 'lmn:delete_note' note_pk=note.pk%}" class="btn btn-danger" id="delete_note_button">Delete Note</a>
+        <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-show-count="false">Tweet</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+        <a class=twitter-share-button"
+           href="https://twitter.com/intent/tweet?text=">
+            Tweet</a>
     {% else %}
         <a href={% url 'lmn:like_note' note_pk=note.id %}><span class="glyphicon glyphicon-thumbs-up" id="note_thumbs_up"></span></a>
         <a href={% url 'lmn:dislike_note' note_pk=note.id %}><span class="glyphicon glyphicon-thumbs-down" id="note_thumbs_down"></span></a>
