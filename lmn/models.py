@@ -137,3 +137,16 @@ class LikeNote(models.Model):
         self.value = 1
         self.save()
 
+
+def autocompleteModel(request):
+    if request.is_ajax():
+        q = request.GET.get('term', '').capitalize()
+        search_qs = Venue.objects.filter(name__startswith=q)
+        results=[]
+        for r in search_qs:
+            results.append(r.FIELD)
+        data = json.dumps(results)
+    else:
+        data = 'fail'
+        mimetype = 'application/json'
+        return HttpResponse(data, mimetype)
