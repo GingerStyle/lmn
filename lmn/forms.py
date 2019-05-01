@@ -78,6 +78,12 @@ class UserRegistrationForm(UserCreationForm):
 
         return user
 
+
+class UserLoginForm(forms.Form):
+    username = forms.CharField(widget=forms.TextInput())
+    password = forms.CharField(widget=forms.PasswordInput)
+
+
 class UserProfileForm(forms.ModelForm):
     YEARS = [x for x in range(1940, 2021)]
     birthday = forms.DateField(widget=forms.SelectDateWidget(years=YEARS))
@@ -85,3 +91,4 @@ class UserProfileForm(forms.ModelForm):
     class Meta:
         model = UserProfile
         fields = ('favorite_band', 'birthday', 'userId')
+

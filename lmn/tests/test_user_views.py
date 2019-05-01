@@ -95,7 +95,7 @@ class TestUserAuthentication(TestCase):
         # be redirected to the last page they were at, not the homepage.
         response = self.client.post(reverse('lmn:register'), {'username':'sam12345', 'email':'sam@sam.com', 'password1':'feRpj4w4pso3az@1!2', 'password2':'feRpj4w4pso3az', 'first_name':'sam', 'last_name' : 'sam'}, follow=True)
 
-        self.assertRedirects(response, reverse('lmn:homepage'))   # FIXME Fix code to redirect to last page user was on before registration.
+        self.assertRedirects(response, reverse('lmn:my_user_profile'), 302, 200) # FIXME Fix code to redirect to last page user was on before registration.
         self.assertContains(response, 'sam12345')  # Homepage has user's name on it
 
 
