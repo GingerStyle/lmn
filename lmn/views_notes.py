@@ -17,7 +17,7 @@ def new_note(request, show_pk):
 
     if request.method == 'POST' :
 
-        form = NewNoteForm(request.POST)
+        form = NewNoteForm(request.POST, request.FILES)
         if form.is_valid():
             note = form.save(commit=False)
             note.user = request.user
@@ -97,7 +97,7 @@ def edit_note(request, note_pk):
     if request.user!=note.user:
         return redirect('lmn:latest_notes')
     if request.method=='POST':
-        form = NewNoteForm(request.POST, instance=note)
+        form = NewNoteForm(request.POST, request.FILES, instance=note)
         if form.is_valid():
             note = form.save(commit=False)
             note.user = request.user
@@ -105,7 +105,7 @@ def edit_note(request, note_pk):
             note.save()
             return redirect('lmn:note_detail', note_pk=note.pk)
     else:
-        form = NewNoteForm(initial={'title': note.title, 'text': note.text, 'rating': note.rating, 'image': note.image})
+        form = NewNoteForm(instance=note)
         return render(request, 'lmn/notes/edit_note.html', {'show': show, 'note': note, 'form': form})
 
 

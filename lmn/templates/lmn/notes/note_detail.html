@@ -9,17 +9,13 @@
 <p id="note_title"><b>{{ note.title}}</b></p>
     <p id="note_text"><b>{{ note.text }}</b></p>
     {% if note.image %}
-        <p id="image">{{ note.image }}</p>
+        <img src="{{ note.image.url }}">
     {% endif %}
     <p>Rating: {{ note.rating }}</p>
     <p>Likes: {{ note.likes }}</p>
     {% if user == note.user %}
-        <form action="{% url 'lmn:edit_note' note_pk=note.pk %}" method="GET">
-            <button type="submit" class="btn btn-warning" id="edit_note_button">Edit Note</button>
-        </form>
-        <form action="{% url 'lmn:delete_note' note_pk=note.pk%}" method="GET">
-            <button type="submit" class="btn btn-danger" id="delete_note_button">Delete Note</button>
-        </form>
+        <a role="button" href="{% url 'lmn:edit_note' note_pk=note.pk %}" class="btn btn-warning" id="edit_note_button">Edit Note</a>
+        <a role="button" href="{% url 'lmn:delete_note' note_pk=note.pk%}" class="btn btn-danger" id="delete_note_button">Delete Note</a>
     {% else %}
         <a href={% url 'lmn:like_note' note_pk=note.id %}><span class="glyphicon glyphicon-thumbs-up" id="note_thumbs_up"></span></a>
         <a href={% url 'lmn:dislike_note' note_pk=note.id %}><span class="glyphicon glyphicon-thumbs-down" id="note_thumbs_down"></span></a>
