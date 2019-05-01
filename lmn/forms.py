@@ -29,7 +29,7 @@ class UserRegistrationForm(UserCreationForm):
     def clean_username(self):
 
         username = self.cleaned_data['username']
-
+        username = ''.join([c.lower() for c in username])
         if not username:
             raise ValidationError('Please enter a username')
 
@@ -57,6 +57,7 @@ class UserRegistrationForm(UserCreationForm):
 
     def clean_email(self):
         email = self.cleaned_data['email']
+        email = ''.join([c.lower()for c in email])
         if not email:
             raise ValidationError('Please enter an email address')
 

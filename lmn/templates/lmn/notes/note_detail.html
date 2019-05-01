@@ -1,6 +1,7 @@
 {% extends 'lmn/base.html' %}
 {% load static %}
 {% block content %}
+{% load static %}
 
 
 <h2 id="note_page_title">{{ note.show.artist.name }} at {{ note.show.venue.name }} by <a href="{% url 'lmn:user_profile' user_pk=note.user.pk %}">{{ note.user.username }}</a></h2>
