@@ -36,7 +36,8 @@
 
 {% block content %}
 {% endblock %}
-{% block script %}
-{% endblock %}
+{% if logout_message %}
+    <P id="logout_message">{{ logout_message }}</P>
+{% endif %}
 </body>
 </html>
