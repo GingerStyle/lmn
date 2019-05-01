@@ -1,5 +1,6 @@
 {% extends 'lmn/base.html' %}
 {% block content %}
+{% load static %}
 
 
 <h2 id="note_page_title">{{ note.show.artist.name }} at {{ note.show.venue.name }} by <a href="{% url 'lmn:user_profile' user_pk=note.user.pk %}">{{ note.user.username }}</a></h2>
@@ -21,8 +22,9 @@
     {% else %}
         <a href={% url 'lmn:like_note' note_pk=note.id %}><span class="glyphicon glyphicon-thumbs-up" id="note_thumbs_up"></span></a>
         <a href={% url 'lmn:dislike_note' note_pk=note.id %}><span class="glyphicon glyphicon-thumbs-down" id="note_thumbs_down"></span></a>
-    {% endif %}
-{% endblock %}
+        {% endif %}
+        <script src="{% static 'js/delete_note.js' %}"></script>
+        {% endblock %}
 {% block script%}
 
 {% endblock %}
