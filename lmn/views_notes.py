@@ -56,11 +56,11 @@ def add_note_like(request, note_pk):
     user = request.user
     try:
         query = LikeNote.objects.filter(note=note_pk)
-        like = get_object_or_404(query, user=user.pk)
+        like = query.get(user=user.pk)
         if like.value != 1:
             note.add_like()
         like.like()
-    except Http404:
+    except LikeNote.DoesNotExist:
         like = LikeNote(note, user, value=0)
         like.like()
         note.add_like()
@@ -72,11 +72,11 @@ def add_note_dislike(request, note_pk):
     user = request.user
     try:
         query = LikeNote.objects.filter(note=note_pk)
-        like = get_object_or_404(query, user=user.pk)
+        like = query.get(user=user.pk)
         if like.value != -1:
             note.add_dislike()
         like.dislike()
-    except Http404:
+    except LikeNote.DoesNotExist:
         like = LikeNote(note, user, value=0)
         like.dislike()
         note.add_dislike()
